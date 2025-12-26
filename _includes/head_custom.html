@@ -1,25 +1,38 @@
-{% assign has_required_fields = page.title and page.pdf and page.authors and page.authors.size > 0 %}
-{% if has_required_fields %}
-  <meta name="citation_title" content="{{ page.title | escape }}">
-  {% for author in page.authors %}
-    <meta name="citation_author" content="{{ author | escape }}">
-  {% endfor %}
-  {% if page.publication_date %}
-    <meta name="citation_publication_date" content="{{ page.publication_date }}">
-  {% elsif page.year %}
-    <meta name="citation_publication_date" content="{{ page.year }}">
+{% if page.is_paper %}
+  {% assign clean_title = page.title %}
+  {% if page.title contains ":" %}
+    {% assign clean_title = page.title | split: ":" | last | strip %}
   {% endif %}
-  <meta name="citation_pdf_url" content="{{ page.pdf | relative_url | absolute_url }}">
+
+  <meta name="citation_title" content="{{ clean_title | escape }}">
+
+  {% if page.authors %}
+    {% for author in page.authors %}
+      <meta name="citation_author" content="{{ author | escape }}">
+    {% endfor %}
+  {% endif %}
+
+  {% if page.publication_date %}
+    <meta name="citation_publication_date" content="{{ page.publication_date | replace: '-', '/' }}">
+  {% endif %}
+
+  {% if page.pdf_path %}
+    <meta name="citation_pdf_url" content="{{ site.url }}{{ site.baseurl }}{{ page.pdf_path }}">
+  {% endif %}
+
+  <meta name="citation_abstract_html_url" content="{{ page.url | absolute_url }}">
+
   {% if page.abstract %}
     <meta name="citation_abstract" content="{{ page.abstract | strip_newlines | escape }}">
   {% endif %}
+
   {% if page.keywords %}
-    {% assign kws = page.keywords %}
-    {% if kws.first %}
-      {% assign keywords_joined = kws | join: ', ' %}
+    {% assign kw_list = page.keywords %}
+    {% if kw_list.first %}
+      {% assign kw_joined = kw_list | join: ', ' %}
     {% else %}
-      {% assign keywords_joined = kws %}
+      {% assign kw_joined = kw_list %}
     {% endif %}
-    <meta name="citation_keywords" content="{{ keywords_joined | escape }}">
+    <meta name="citation_keywords" content="{{ kw_joined | escape }}">
   {% endif %}
 {% endif %}

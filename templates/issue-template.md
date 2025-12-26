@@ -1,22 +1,18 @@
 ---
 layout: default
-title: Fall 2025
+title: {{ISSUE_TITLE}}
 parent: Issues
 nav_order: 1
 has_children: true
 is_issue: true
-issue_slug: "2025-fall"
-issue_title: "Fall 2025"
-issue_order: 2025.2
-permalink: /issues/2025-fall/
-description: Student research from the Fall 2025 ECON 490 capstone cohort.
+issue_slug: "{{ISSUE_SLUG}}"
+issue_title: "{{ISSUE_TITLE}}"
+issue_order: {{ISSUE_ORDER}}
+permalink: /issues/{{ISSUE_SLUG}}/
+description: Research from {{ISSUE_TITLE}}.
 ---
 
-# Fall 2025
-
-Research papers from the Fall 2025 ECON 490 capstone.
-
-## Papers in this issue
+# {{ISSUE_TITLE}}
 
 {% assign papers = site.pages | where: "issue_slug", page.issue_slug | where: "is_paper", true | sort: "nav_order" %}
 {% if papers and papers.size > 0 %}

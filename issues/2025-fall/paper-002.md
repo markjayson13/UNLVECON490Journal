@@ -1,29 +1,31 @@
 ---
 layout: default
-title: Another Research Title
-issue_id: 2025-fall
-paper_id: 002
-authors:
-  - Another Student
-year: 2025
-publication_date: 2025-12-01
-keywords:
-  - Economics
-  - Research
-  - UNLV
-pdf: /assets/papers/2025-fall/paper-002.pdf
-abstract: |
-  This is a placeholder for the paper abstract. The abstract should provide a brief overview of the research question, methodology, and key findings.
+title: "Paper 002: Tourism Recovery and Airline Capacity"
 parent: Fall 2025
 grand_parent: Issues
 nav_order: 2
+is_paper: true
+paper_id: "2025-fall-002"
+issue_slug: "2025-fall"
+issue_title: "Fall 2025"
+publication_date: "2025-12-26"
+authors:
+  - Alex Nguyen
+  - Priya Desai
+keywords:
+  - tourism
+  - airlines
+  - economic recovery
+abstract: |
+  We analyze how post-pandemic airline capacity influenced the pace of tourism recovery in Las Vegas. Using monthly BTS T-100 data merged with STR hotel performance metrics, we estimate elasticities between available seat miles and hotel occupancy. The findings suggest capacity additions from low-cost carriers accelerated recovery in weekend leisure segments but had muted effects on weekday business travel.
+pdf_path: "/assets/papers/2025-fall/paper-002.pdf"
 ---
 
 # {{ page.title }}
 
 **Authors:** {{ page.authors | join: ", " }}  
-**Publication date:** {{ page.publication_date | default: page.year }}  
-**Issue:** Fall 2025
+**Publication date:** {{ page.publication_date }}  
+**Issue:** {{ page.issue_title }}
 
 ## Abstract
 
@@ -31,13 +33,7 @@ nav_order: 2
 
 ## Download
 
-[Download PDF]({{ page.pdf | relative_url }}){: .btn .btn-primary }
-
-## Citation
-
-```
-Another Student (2025). {{ page.title }}. UNLV ECON 490 Journal, Fall 2025. Retrieved from {{ page.pdf | relative_url }}
-```
+[Download PDF]({{ page.pdf_path | relative_url }}){: .btn .btn-primary }
 
 ## Keywords
 

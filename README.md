@@ -1,91 +1,77 @@
-# UNLV ECON 490 Journal / Proceedings
+# UNLV ECON 490 Capstone Proceedings
 
-Public GitHub Pages site built with **Jekyll + Just-the-Docs**. Papers are organized by issue (semester + year), surfaced with search, and include citation-friendly metadata.
+Static GitHub Pages site built with **Jekyll + Just the Docs**. Papers are organized by issue (semester + year). Each paper page exposes its abstract, metadata, and PDF link plus Google Scholar–friendly citation tags.
 
-## Configuration
-
-Key settings in `_config.yml`:
-
-```yaml
-url: https://markjayson13.github.io
-baseurl: /UNLVECON490Journal
-permalink: pretty
-remote_theme: just-the-docs/just-the-docs
-plugins:
-  - jekyll-sitemap
-```
-
-Set **Settings → Pages → Source** to **GitHub Actions** to use the included workflow `.github/workflows/pages.yml`.
-
-## Local development (macOS)
+## Local preview (macOS)
 
 ```bash
 brew install ruby
 gem install bundler
-bundle install          # uses Gemfile with github-pages for compatibility
+bundle install
 
-# Serve with live reload
-make serve              # or: bundle exec jekyll serve --livereload
+# Serve locally with live reload
+bundle exec jekyll serve --livereload
 
-# Build the site
-make build
+# Build only
+bundle exec jekyll build
 ```
 
 Site output is written to `_site/`.
 
-## Adding an issue and paper
-
-Issues and papers live in parallel markdown files and PDFs:
-
-```
-issues/<issue-id>/index.md          # issue landing page
-issues/<issue-id>/paper-001.md      # paper page
-assets/papers/<issue-id>/paper-001.pdf
-```
-
-Front matter expected on paper pages:
-
-```yaml
-layout: default
-title: Paper Title
-issue_id: 2025-fall
-paper_id: 001
-authors: ["Author One", "Author Two"]
-year: 2025
-publication_date: 2025-12-01
-keywords: ["economics", "policy"]
-pdf: /assets/papers/2025-fall/paper-001.pdf
-abstract: |
-  Concise abstract here.
-```
-
-### Automation helpers
-
-Create a new issue (also scaffolds paper-001 and the PDF folder):
+## Adding an issue (semester/year)
 
 ```bash
-python tools/new_issue.py 2026-spring --title "Spring 2026"
+python tools/new_issue.py 2026-spring --title "Spring 2026" --order 2026.1
 ```
 
-Add an additional paper to an existing issue:
+What it does:
+- Creates `issues/<issue_slug>/index.md` from `templates/issue-template.md`
+- Ensures `assets/papers/<issue_slug>/` exists
+- Inserts the new issue link into `issues.md` (newest first)
+
+## Adding a paper
 
 ```bash
-python tools/new_paper.py 2026-spring 002 --title "New Paper" --authors "Author One,Author Two" --keywords "economics,markets"
+python tools/new_paper.py --issue 2026-spring --number 001 \
+  --title "Paper Title" \
+  --authors "Author One,Author Two" \
+  --keywords "economics,policy" \
+  --publication-date "2026-05-15"
 ```
 
-Then place the corresponding PDF at `assets/papers/<issue-id>/paper-<paper_id>.pdf`.
+The script prompts for any missing fields, writes `issues/<issue_slug>/paper-###.md` from `templates/paper-template.md`, and tells you where to place the PDF (`assets/papers/<issue_slug>/paper-###.pdf`).
+
+## Validate the catalog
+
+```bash
+python tools/validate_catalog.py           # warnings only
+python tools/validate_catalog.py --ci      # fail on errors (used in CI)
+```
+
+Checks required front matter, keywords/abstract length, and PDF existence.
 
 ## Deployment
 
-The workflow `.github/workflows/pages.yml` builds with `actions/jekyll-build-pages` and deploys via `actions/deploy-pages`. Once enabled, commits to `main` will publish automatically to:
+GitHub Actions workflow: `.github/workflows/deploy-pages.yml`
+- Triggers on pushes to `main` and manual dispatch
+- Runs catalog validation, builds with Jekyll, and deploys to Pages
+- Publishes to: `https://markjayson13.github.io/UNLVECON490Journal/`
 
+Branch-based fallback (no Actions):
+1) Settings → Pages → Source: select `main` branch and `/ (root)`  
+2) Save. Pages will serve the built site in a few minutes.
+
+## Baseurl troubleshooting
+
+The site is a GitHub project page and **must** use:
+
+```yaml
+url: "https://markjayson13.github.io"
+baseurl: "/UNLVECON490Journal"
 ```
-https://markjayson13.github.io/UNLVECON490Journal/
-```
 
-## Content and policies
+If links 404 locally, include `--baseurl ''` when serving (`bundle exec jekyll serve --baseurl ''`).
 
-- **Search & navigation:** Just-the-Docs sidebar + search are enabled site-wide.  
-- **Metadata:** Paper pages emit Google Scholar–style `citation_*` meta tags via `_includes/head_custom.html`.  
-- **Policies:** See `/policies/` for copyright, takedown, privacy, integrity, and AI-use guidance.  
-- **Disclaimer:** Undergraduate proceedings; not peer-reviewed unless stated.
+## Placeholder PDFs
+
+Example PDFs live in `assets/papers/2025-fall/`. Replace them with your actual exports but keep the same filenames to match paper pages.

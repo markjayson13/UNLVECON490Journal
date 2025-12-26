@@ -5,16 +5,20 @@ nav_order: 3
 permalink: /about/
 ---
 
-# About the Journal
+# About the proceedings
 
-The UNLV ECON 490 Journal/Proceedings showcases undergraduate research produced in the ECON 490 course. The journal is maintained by the Department of Economics to highlight student scholarship and make it discoverable.
+The UNLV ECON 490 Capstone Proceedings archive undergraduate research papers from the senior capstone course. Each issue corresponds to a semester and year, with individual paper pages that expose abstracts, keywords, and PDF links for easy discovery.
 
-## Purpose
+## Scope
 
-- Provide an open, searchable archive of undergraduate research projects.  
-- Encourage rigorous inquiry and clear communication of economic ideas.  
-- Offer a reference for future students and faculty mentors.
+- Empirical and theoretical work produced for ECON 490.  
+- Student-led projects with faculty mentorship.  
+- Applied economics topics relevant to Nevada and beyond.
 
-## Stewardship
+## Disclaimer
 
-This site is coordinated by the UNLV Department of Economics. For general questions or corrections, please email **econ-journal@example.edu**.
+These proceedings are not peer reviewed unless explicitly noted on a paper. Authors are responsible for the accuracy of their work and for respecting data privacy and copyright.
+
+## Contact
+
+For questions, corrections, or general feedback, email the course coordinator or open an issue on GitHub.
