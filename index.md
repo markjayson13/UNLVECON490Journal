@@ -2,32 +2,22 @@
 layout: default
 title: Home
 nav_order: 1
-description: "Welcome to the UNLV ECON 490 Journal"
+description: "UNLV ECON 490 Capstone Proceedings"
 permalink: /
 ---
 
-# Welcome to UNLV ECON 490 Journal
+# UNLV ECON 490 Capstone Proceedings
 
-This site hosts academic papers and proceedings from the UNLV ECON 490 course.
+Browse undergraduate economics capstone papers by semester and year. Each paper page includes its abstract, metadata, and a PDF download.
 
-> **Disclaimer:** Undergraduate proceedings (not peer-reviewed unless stated).
+> Disclaimer: Undergraduate proceedings. Not peer reviewed unless explicitly stated on a paper.
 
-## About
+## Start here
 
-The UNLV ECON 490 Journal is a curated collection of student research papers covering various topics in economics. Papers are organized by issue (semester + year) to make browsing simple.
+- Visit [Issues]({{ '/issues/' | relative_url }}) to pick a semester.
+- Open a paper to read the abstract and download the PDF.
+- Use the built-in search to find titles, authors, or keywords.
 
-## Latest Issues
+## Latest issue
 
-Browse our collection of papers by semester:
-
-- [Fall 2025 Issue]({{ '/issues/2025-fall/' | relative_url }})
-
-## Navigation
-
-Use the sidebar to explore Issues, Policies, the Editorial Board, and submission guidance. The search bar helps you quickly find topics, authors, and paper titles.
-
-## How to browse
-
-- Start at the **Issues** page to pick a semester.
-- Open an issue to see all included papers with abstracts and PDF links.
-- Each paper page provides metadata, keywords, and citation details for quick reference.
+- [Fall 2025]({{ '/issues/2025-fall/' | relative_url }})
