@@ -23,9 +23,9 @@ def read_front_matter_title(issue_slug: str) -> str:
     return issue_slug.replace("-", " ").title()
 
 
-def to_yaml_block(items: List[str]) -> str:
+def to_yaml_block(items: List[str], placeholder: str) -> str:
     if not items:
-        return "  - Author Name"
+        return f"  - {placeholder}"
     return "\n".join(f"  - {item.strip()}" for item in items if item.strip())
 
 
@@ -33,6 +33,7 @@ def render_template(
     issue_slug: str,
     issue_title: str,
     paper_number: str,
+    paper_number_int: int,
     paper_title: str,
     authors_block: str,
     keywords_block: str,
@@ -44,7 +45,7 @@ def render_template(
         content.replace("{{ISSUE_SLUG}}", issue_slug)
         .replace("{{ISSUE_TITLE}}", issue_title)
         .replace("{{PAPER_NUMBER}}", paper_number)
-        .replace("{{PAPER_NUMBER_INT}}", str(int(paper_number)))
+        .replace("{{PAPER_NUMBER_INT}}", str(paper_number_int))
         .replace("{{PAPER_TITLE}}", paper_title.strip())
         .replace("{{AUTHORS_BLOCK}}", authors_block)
         .replace("{{KEYWORDS_BLOCK}}", keywords_block)
@@ -80,7 +81,7 @@ def main():
     issue_slug = args.issue.rstrip("/")
     issue_title = read_front_matter_title(issue_slug)
     paper_number = args.number.zfill(3)
-    paper_title = prompt_if_missing(args.title, "Paper title")
+    paper_title = prompt_if_missing(args.title, "Paper title").strip('"')
     authors_input = prompt_if_missing(args.authors or "", "Authors (comma separated)")
     keywords_input = prompt_if_missing(args.keywords or "", "Keywords (comma separated)")
     abstract_text = prompt_if_missing(args.abstract or "", "Abstract")
@@ -91,13 +92,20 @@ def main():
     authors = [a.strip() for a in authors_input.split(",") if a.strip()]
     keywords = [k.strip() for k in keywords_input.split(",") if k.strip()]
 
-    authors_block = to_yaml_block(authors)
-    keywords_block = to_yaml_block(keywords) if keywords else "  - keyword"
+    authors_block = to_yaml_block(authors, "Author Name")
+    keywords_block = to_yaml_block(keywords, "keyword")
+
+    try:
+        paper_number_int = int(paper_number)
+    except ValueError:
+        print(f"Paper number must be numeric, got '{paper_number}'.")
+        return
 
     rendered = render_template(
         issue_slug=issue_slug,
         issue_title=issue_title,
         paper_number=paper_number,
+        paper_number_int=paper_number_int,
         paper_title=paper_title,
         authors_block=authors_block,
         keywords_block=keywords_block,

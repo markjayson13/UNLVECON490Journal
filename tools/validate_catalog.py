@@ -3,6 +3,7 @@
 Validate paper metadata and PDF presence.
 """
 import argparse
+import sys
 from pathlib import Path
 from typing import Dict, List, Tuple
 
@@ -86,7 +87,7 @@ def validate_paper(path: Path, ci: bool) -> Tuple[int, int]:
         errors += 1
         print(f"[ERROR] {path.relative_to(ROOT)} missing fields: {', '.join(missing)}")
 
-    if fm.get("authors") == []:
+    if not fm.get("authors"):
         warnings += 1
         print(f"[WARN ] {path.relative_to(ROOT)} authors list is empty.")
 
@@ -132,7 +133,7 @@ def main():
 
     print(f"\nValidation complete. Errors: {total_errors}, Warnings: {total_warnings}")
     if total_errors > 0:
-        exit(1)
+        sys.exit(1)
 
 
 if __name__ == "__main__":

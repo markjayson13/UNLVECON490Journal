@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Paper {{PAPER_NUMBER}}: {{PAPER_TITLE}}"
-parent: {{ISSUE_TITLE}}
+parent: "{{ISSUE_TITLE}}"
 grand_parent: Issues
 nav_order: {{PAPER_NUMBER_INT}}
 is_paper: true

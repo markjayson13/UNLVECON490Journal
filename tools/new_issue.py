@@ -7,6 +7,9 @@ from typing import List, Dict
 ROOT = Path(__file__).resolve().parents[1]
 TEMPLATE = ROOT / "templates" / "issue-template.md"
 ISSUES_PAGE = ROOT / "issues.md"
+ISSUES_LIST_PATTERN = re.compile(
+    r"<!-- issues-list:start -->.*<!-- issues-list:end -->", re.DOTALL
+)
 
 
 def read_front_matter(path: Path) -> Dict[str, str]:
@@ -46,12 +49,13 @@ def update_issues_page(entries: List[Dict[str, str]]):
     if start not in text or end not in text:
         return
 
-    try:
-        sorted_entries = sorted(
-            entries, key=lambda e: float(e.get("issue_order", 0)), reverse=True
-        )
-    except ValueError:
-        sorted_entries = entries
+    def order_value(entry: Dict[str, str]) -> float:
+        try:
+            return float(entry.get("issue_order", "0"))
+        except (TypeError, ValueError):
+            return 0.0
+
+    sorted_entries = sorted(entries, key=order_value, reverse=True)
 
     lines = [start]
     for entry in sorted_entries:
@@ -60,13 +64,13 @@ def update_issues_page(entries: List[Dict[str, str]]):
         lines.append(f"- [{title}]({{{{ '/issues/{slug}/' | relative_url }}}})")
     lines.append(end)
 
-    pattern = re.compile(
-        r"<!-- issues-list:start -->.*<!-- issues-list:end -->", re.DOTALL
-    )
-    ISSUES_PAGE.write_text(
-        pattern.sub("\n".join(lines), text), encoding="utf-8"
-    )
-    print("Updated issues.md list (newest first).")
+    try:
+        ISSUES_PAGE.write_text(
+            ISSUES_LIST_PATTERN.sub("\n".join(lines), text), encoding="utf-8"
+        )
+        print("Updated issues.md list (newest first).")
+    except OSError as exc:
+        print(f"Failed to update issues.md: {exc}")
 
 
 def collect_issues() -> List[Dict[str, str]]:
