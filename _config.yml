@@ -1,9 +1,11 @@
 title: UNLV ECON 490 Capstone Proceedings
+tagline: A student-researched journal from the UNLV ECON 490 capstone cohorts.
 description: Undergraduate economics capstone papers organized by semester and year.
+contact_email: "econ490journal@unlv.edu"
+
 url: "https://markjayson13.github.io"
 baseurl: "/UNLVECON490Journal"
 permalink: /:categories/:title/
-contact_email: "econ490journal@unlv.edu"
 home_preview_length: 160
 
 remote_theme: "mmistakes/minimal-mistakes"
@@ -12,9 +14,9 @@ minimal_mistakes_skin: "custom"
 markdown: kramdown
 
 plugins:
-  - jekyll-remote-theme
   - jekyll-include-cache
   - jekyll-sitemap
+  - jekyll-remote-theme
 
 defaults:
   - scope:
@@ -27,11 +29,17 @@ defaults:
       path: "issues"
       type: "pages"
     values:
+      layout: single
       classes: wide
+  - scope:
+      path: "issues/*/paper-*.md"
+    values:
+      layout: paper
   - scope:
       path: "policies"
       type: "pages"
     values:
+      layout: single
       classes: wide
   - scope:
       path: ""

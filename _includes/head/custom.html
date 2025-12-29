@@ -2,10 +2,11 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-{% if page.is_paper %}
+{% assign is_paper_page = page.is_paper or page.paper_id %}
+{% if is_paper_page %}
   {% assign clean_title = page.title %}
-  {% if page.title contains ":" %}
-    {% assign clean_title = page.title | split: ":" | last | strip %}
+  {% if clean_title contains ":" %}
+    {% assign clean_title = clean_title | split: ":" | last | strip %}
   {% endif %}
 
   <meta name="citation_title" content="{{ clean_title | escape }}">
@@ -18,25 +19,14 @@
 
   {% if page.publication_date %}
     <meta name="citation_publication_date" content="{{ page.publication_date | replace: '-', '/' }}">
+  {% elsif page.year %}
+    <meta name="citation_publication_date" content="{{ page.year }}/01/01">
   {% endif %}
 
-  {% if page.pdf_path %}
-    <meta name="citation_pdf_url" content="{{ site.url }}{{ site.baseurl }}{{ page.pdf_path }}">
+  {% assign pdf_path = page.pdf_path | default: page.pdf %}
+  {% if pdf_path %}
+    <meta name="citation_pdf_url" content="{{ site.url }}{{ site.baseurl }}{{ pdf_path }}">
   {% endif %}
 
   <meta name="citation_abstract_html_url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-
-  {% if page.abstract %}
-    <meta name="citation_abstract" content="{{ page.abstract | strip_newlines | escape }}">
-  {% endif %}
-
-  {% if page.keywords %}
-    {% assign kw_list = page.keywords %}
-    {% if kw_list.first %}
-      {% assign kw_joined = kw_list | join: ', ' %}
-    {% else %}
-      {% assign kw_joined = kw_list %}
-    {% endif %}
-    <meta name="citation_keywords" content="{{ kw_joined | escape }}">
-  {% endif %}
 {% endif %}
