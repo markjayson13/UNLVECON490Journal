@@ -2,6 +2,7 @@
 body {
   color: #000000;
   background: #ffffff;
+  line-height: 1.7;
 }
 
 a {
@@ -15,6 +16,7 @@ a {
 
 .page__inner-wrap {
   border-top: 1px solid lighten(#666666, 35%);
+  max-width: 1100px;
 }
 
 .masthead,
@@ -29,6 +31,7 @@ a {
 .btn,
 .btn--primary {
   border-radius: 6px;
+  font-weight: 600;
 }
 
 .btn--primary,
@@ -51,6 +54,64 @@ h2,
 h3,
 h4 {
   font-family: "Playfair Display", Georgia, serif;
+}
+
+.home-page {
+  .masthead {
+    display: none;
+  }
+
+  .page__content {
+    padding-top: 0;
+  }
+}
+
+.home-title-block {
+  text-align: center;
+  padding: 3.5rem 1rem 1.25rem;
+
+  h1 {
+    font-size: clamp(2.4rem, 5vw, 3.3rem);
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.02em;
+  }
+
+  .site-tagline {
+    color: $muted-text-color;
+    font-size: 1rem;
+    letter-spacing: 0.04em;
+  }
+}
+
+.home-nav {
+  text-align: center;
+  margin-bottom: 2.5rem;
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 1.4rem;
+  }
+
+  a {
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    font-size: 0.85rem;
+    color: #666666;
+    font-weight: 700;
+    padding-bottom: 0.2rem;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+
+    &:hover,
+    &:focus {
+      color: $unlv-red;
+      border-color: $unlv-red;
+    }
+  }
 }
 
 .paper-header {
@@ -102,6 +163,9 @@ h4 {
   margin-bottom: 2rem;
   color: #ffffff;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  min-height: 360px;
+  display: flex;
+  align-items: center;
 
   &::after {
     content: "";
@@ -110,7 +174,7 @@ h4 {
     background: linear-gradient(
       135deg,
       rgba(0, 0, 0, 0.65),
-      rgba(red($unlv-red), green($unlv-red), blue($unlv-red), 0.7)
+      rgba(177, 2, 2, 0.7)
     );
     mix-blend-mode: multiply;
   }
@@ -121,6 +185,7 @@ h4 {
     margin: 0 auto;
     text-align: center;
     z-index: 1;
+    padding: 0 1rem;
   }
 
   h1 {
@@ -136,6 +201,7 @@ h4 {
     display: inline-flex;
     gap: 0.75rem;
     margin-top: 1.5rem;
+    flex-wrap: wrap;
 
     .btn {
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -165,6 +231,10 @@ h4 {
   margin-bottom: 1.25rem;
 }
 
+.section-title h2 {
+  margin: 0;
+}
+
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -177,6 +247,10 @@ h4 {
   padding: 1.1rem;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
   background: #ffffff;
+}
+
+.summary-card h3 {
+  margin-top: 0.25rem;
 }
 
 .eyebrow {
@@ -211,5 +285,37 @@ h4 {
 
   .authors {
     color: #666666;
+  }
+}
+
+.home-section {
+  margin: 2.5rem 0;
+}
+
+.cta-buttons {
+  display: inline-flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1.5px solid $unlv-red;
+  color: $unlv-red;
+
+  &:hover,
+  &:focus {
+    background: rgba(177, 2, 2, 0.1);
+  }
+}
+
+@media (max-width: 720px) {
+  .home-title-block {
+    padding: 2.75rem 1rem 1.25rem;
+  }
+
+  .hero-banner {
+    padding: 3rem 1.5rem;
+    min-height: 300px;
   }
 }

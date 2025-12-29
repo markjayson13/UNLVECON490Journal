@@ -3,7 +3,8 @@ layout: paper
 title: "Paper 001: Housing Market Dynamics in Las Vegas"
 permalink: /issues/2025-fall/paper-001/
 is_paper: true
-paper_id: "2025-fall-001"
+paper_id: "001"
+issue_id: "2025-fall"
 issue_slug: "2025-fall"
 issue_title: "Fall 2025"
 publication_date: "2025-12-26"

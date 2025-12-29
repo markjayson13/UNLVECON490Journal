@@ -5,14 +5,17 @@ layout: single
 {% if page.title contains ":" %}
   {% assign display_title = page.title | split: ":" | last | strip %}
 {% endif %}
+{% assign issue_page = site.pages | where: "issue_id", page.issue_id | first %}
+{% assign issue_label = page.issue_title | default: issue_page.title %}
+{% assign pdf_path = page.pdf_path | default: page.pdf %}
 
 <div class="paper-header">
   <h1 class="paper-title">{{ display_title }}</h1>
-  {% if page.issue_title %}
-    <p class="paper-meta"><strong>Issue:</strong> {{ page.issue_title }}</p>
+  {% if issue_label %}
+    <p class="paper-meta"><strong>Issue:</strong> {{ issue_label }}</p>
   {% endif %}
-  {% if page.publication_date %}
-    <p class="paper-meta"><strong>Publication date:</strong> {{ page.publication_date }}</p>
+  {% if page.publication_date or page.year %}
+    <p class="paper-meta"><strong>Publication date:</strong> {{ page.publication_date | default: page.year }}</p>
   {% endif %}
   {% if page.authors %}
     <p class="paper-meta"><strong>Authors:</strong> {{ page.authors | join: ", " }}</p>
@@ -23,11 +26,11 @@ layout: single
 </div>
 
 <div class="paper-actions">
-  {% if page.pdf_path %}
-    <a class="btn btn--primary" href="{{ page.pdf_path | relative_url }}">Download PDF</a>
+  {% if pdf_path %}
+    <a class="btn btn--primary" href="{{ pdf_path | relative_url }}">Download PDF</a>
   {% endif %}
-  {% if page.issue_slug %}
-    <a class="btn" href="{{ '/issues/' | append: page.issue_slug | append: '/' | relative_url }}">Back to issue</a>
+  {% if issue_page %}
+    <a class="btn btn-secondary" href="{{ issue_page.url | relative_url }}">Back to Issue</a>
   {% endif %}
 </div>
 
