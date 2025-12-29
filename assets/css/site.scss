@@ -356,8 +356,14 @@ a:hover {
 
 .grid-2 {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr 1fr;
   gap: 18px;
+}
+
+@media (max-width: 900px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
 }
 
 .grid-4 {
@@ -916,8 +922,7 @@ a.btn-primary:hover {
 .person-links {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  padding-left: 6px;
+  gap: 10px;
 }
 
 .icon-link {
@@ -931,13 +936,16 @@ a.btn-primary:hover {
   width: 18px;
   height: 18px;
   fill: #b10202;
-  opacity: 0.95;
 }
 
 .icon-link span {
   color: #333;
   text-decoration: underline;
   text-underline-offset: 3px;
+}
+
+.icon-link:hover svg {
+  transform: translateY(-1px);
 }
 
 .page-note {
@@ -1066,32 +1074,32 @@ a.btn-primary:hover {
   padding-left: 22px;
 }
 
-.icon-link {
+.site-footer .icon-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
   text-decoration: none;
 }
 
-.icon-link svg {
+.site-footer .icon-link svg {
   width: 18px;
   height: 18px;
   fill: #fff;
   opacity: 0.95;
 }
 
-.icon-link span {
+.site-footer .icon-link span {
   color: #fff;
   text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-.icon-link:hover svg {
+.site-footer .icon-link:hover svg {
   opacity: 1;
   transform: translateY(-1px);
 }
 
-.icon-link:hover span {
+.site-footer .icon-link:hover span {
   opacity: 1;
 }
 
