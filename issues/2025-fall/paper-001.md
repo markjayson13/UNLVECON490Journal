@@ -1,4 +1,3 @@
-<img width="468" height="28" alt="image" src="https://github.com/user-attachments/assets/30b6c518-4459-4b49-ab29-96e21650cce1" />---
 layout: paper
 title: "Paper 001: The Race for Increasing College Costs"
 permalink: /issues/2024-spring/paper-001/
