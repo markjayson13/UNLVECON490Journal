@@ -3,29 +3,41 @@ layout: single
 title: Browse issues by semester
 permalink: /issues/
 ---
-{% assign issues = site.pages | where: "is_issue", true | sort: "issue_order" | reverse %}
+{% assign all_issues = site.pages | where: "is_issue", true %}
+{% assign issues_with_dates = all_issues | where_exp: "issue", "issue.issue_date" | sort: "issue_date" | reverse %}
+{% assign issues_without_dates = all_issues | where_exp: "issue", "issue.issue_date == nil" | sort: "issue_slug" | reverse %}
+{% comment %}Newest issues prioritize explicit issue_date, then fall back to slug order.{% endcomment %}
+{% assign issues = issues_with_dates | concat: issues_without_dates %}
 
-<p class="eyebrow">Issues</p>
-<p class="muted">Newest releases appear first.</p>
+<section class="container content-section page-header">
+  <p class="eyebrow">Issues</p>
+  <h1>Issues</h1>
+  <p class="page-subtitle">Browse by semester</p>
+  <p class="muted small">Newest releases appear first.</p>
+</section>
 
-{% if issues and issues.size > 0 %}
-  <div class="card-grid">
-    {% for issue in issues %}
-      <article class="card">
-        <p class="eyebrow">{{ issue.issue_title | default: issue.title }}</p>
-        <h3><a href="{{ issue.url | relative_url }}">{{ issue.title }}</a></h3>
-        {% if issue.description %}
-          <p class="muted">{{ issue.description }}</p>
-        {% endif %}
-        <div class="card-actions">
-          <a class="btn btn-small btn-primary" href="{{ issue.url | relative_url }}">View Issue</a>
-        </div>
-      </article>
-    {% endfor %}
-  </div>
-{% else %}
-  <p class="muted">No issues have been published yet.</p>
-{% endif %}
+<section class="container content-section">
+  {% if issues and issues.size > 0 %}
+    <div class="card-grid">
+      {% for issue in issues %}
+        {% assign issue_title = issue.issue_title | default: issue.title %}
+        {% assign fallback_description = 'Capstone papers for ' | append: issue_title | append: '.' %}
+        <article class="card issue-card">
+          <p class="eyebrow">{{ issue_title | upcase }}</p>
+          <h3><a href="{{ issue.url | relative_url }}">{{ issue_title }}</a></h3>
+          <p class="muted">{{ issue.description | default: fallback_description }}</p>
+          <div class="card-actions">
+            <a class="btn btn-small btn-primary" href="{{ issue.url | relative_url }}">View Issue</a>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="card">
+      <p class="muted">No issues have been published yet.</p>
+    </div>
+  {% endif %}
+</section>
 
 <!-- issues-list:start -->
 <!-- Managed by tools/new_issue.py; newest first -->

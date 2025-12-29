@@ -4,7 +4,7 @@ permalink: /
 title: "UNLV ECON 495 Journal"
 hero_heading: "UNLV ECON 495 Journal"
 hero_subheading: "A working paper series of undergraduate capstone research from UNLV Economics."
-hero_image: "/assets/images/hero.jpg"
+hero_image: "/assets/images/lee-business-school.jpg"
 hero_overlay: "/assets/images/hero-overlay.png"
 primary_cta_label: "Browse Issues"
 primary_cta_link: "/issues/"
