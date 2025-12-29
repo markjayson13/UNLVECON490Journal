@@ -1,10 +1,8 @@
----
-layout: default
+layout: single
 title: Policies
 nav_order: 4
 permalink: /policies/
 has_children: true
----
 
 # Policies
 

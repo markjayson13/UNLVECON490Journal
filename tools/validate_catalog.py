@@ -82,6 +82,10 @@ def validate_paper(path: Path, ci: bool) -> Tuple[int, int]:
     warnings = 0
     fm = parse_front_matter(path)
 
+    if fm.get("layout") != "paper":
+        warnings += 1
+        print(f"[WARN ] {path.relative_to(ROOT)} layout should be 'paper'.")
+
     missing = [field for field in REQUIRED_FIELDS if field not in fm or fm[field] in (None, "", [])]
     if missing:
         errors += 1

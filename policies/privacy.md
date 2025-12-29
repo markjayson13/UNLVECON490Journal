@@ -1,10 +1,8 @@
----
-layout: default
+layout: single
 title: Privacy
 parent: Policies
 nav_order: 4
 permalink: /policies/privacy/
----
 
 # Privacy guidance
 

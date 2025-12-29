@@ -21,6 +21,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
       - name: Validate catalog
         run: python tools/validate_catalog.py --ci
 
@@ -29,11 +34,8 @@ jobs:
         with:
           enablement: true
 
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
+      - name: Build with Jekyll (Bundler)
+        run: bundle exec jekyll build -d _site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

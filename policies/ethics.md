@@ -1,10 +1,8 @@
----
-layout: default
+layout: single
 title: Ethics
 parent: Policies
 nav_order: 3
 permalink: /policies/ethics/
----
 
 # Ethics and academic integrity
 

@@ -1,0 +1,35 @@
+$unlv-red: #b10202;
+
+$background-color: #ffffff;
+$page-background-color: #ffffff;
+$text-color: #000000;
+$muted-text-color: #666666;
+
+$brand-color: $unlv-red;
+$primary-color: $unlv-red;
+$link-color: $unlv-red;
+$link-color-hover: darken($unlv-red, 8%);
+$btn-primary-color: $unlv-red;
+$btn-primary-text-color: #ffffff;
+$btn-primary-background: $unlv-red;
+$btn-primary-border: $unlv-red;
+$btn-primary-color-hover: #ffffff;
+$btn-primary-background-hover: darken($unlv-red, 8%);
+$btn-primary-border-hover: darken($unlv-red, 8%);
+
+$masthead-background: #ffffff;
+$masthead-link-color: #000000;
+$masthead-link-color-hover: $unlv-red;
+$navicon-link-color-hover: $unlv-red;
+
+$footer-background-color: #ffffff;
+$footer-text-color: #000000;
+$footer-link-color: $unlv-red;
+$footer-link-color-hover: darken($unlv-red, 8%);
+
+$border-color: lighten(#666666, 35%);
+$table-border-color: lighten(#666666, 35%);
+$code-background-color: lighten(#666666, 45%);
+
+$body-font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+$heading-font-family: "Playfair Display", Georgia, serif;

@@ -1,10 +1,8 @@
----
-layout: default
+layout: single
 title: Permissions
 parent: Policies
 nav_order: 1
 permalink: /policies/permissions/
----
 
 # Permissions and licensing
 

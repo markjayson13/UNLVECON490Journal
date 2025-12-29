@@ -1,10 +1,6 @@
----
-layout: default
+layout: single
 title: Issues
-nav_order: 2
-has_children: true
 permalink: /issues/
----
 
 # Issues
 

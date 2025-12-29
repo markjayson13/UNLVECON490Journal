@@ -1,10 +1,8 @@
----
-layout: default
+layout: single
 title: Takedown
 parent: Policies
 nav_order: 2
 permalink: /policies/takedown/
----
 
 # Takedown and corrections
 

@@ -1,21 +1,17 @@
 ---
 layout: single
-title: {{ISSUE_TITLE}}
-permalink: /issues/{{ISSUE_SLUG}}/
-is_issue: true
-issue_slug: "{{ISSUE_SLUG}}"
-issue_title: "{{ISSUE_TITLE}}"
-issue_order: {{ISSUE_ORDER}}
-description: Research from {{ISSUE_TITLE}}.
-classes: wide
+title: Papers
+permalink: /papers/
 ---
 
-## Papers in this issue
+{% assign papers = site.pages | where: "is_paper", true %}
+{% assign papers_with_pub = papers | where_exp: "paper", "paper.publication_date" | sort: "publication_date" | reverse %}
+{% assign papers_without_pub = papers | where_exp: "paper", "paper.publication_date == nil" | sort: "date" | reverse %}
+{% assign all_papers = papers_with_pub | concat: papers_without_pub %}
 
-{% assign papers = site.pages | where: "issue_slug", page.issue_slug | where: "is_paper", true | sort: "publication_date" | reverse %}
-{% if papers and papers.size > 0 %}
+{% if all_papers and all_papers.size > 0 %}
 <div class="card-grid featured-papers">
-  {% for paper in papers %}
+  {% for paper in all_papers %}
     {% assign clean_title = paper.title %}
     {% if paper.title contains ":" %}
       {% assign clean_title = paper.title | split: ":" | last | strip %}
@@ -25,7 +21,9 @@ classes: wide
         {% if paper.publication_date %}
           <span class="pill">{{ paper.publication_date }}</span>
         {% endif %}
-        <span class="pill">{{ page.issue_title }}</span>
+        {% if paper.issue_title %}
+          <span class="pill">{{ paper.issue_title }}</span>
+        {% endif %}
       </div>
       <h3><a href="{{ paper.url | relative_url }}">{{ clean_title }}</a></h3>
       {% if paper.authors %}
@@ -44,5 +42,5 @@ classes: wide
   {% endfor %}
 </div>
 {% else %}
-No papers have been added to this issue yet.
+<p>No papers available yet.</p>
 {% endif %}

@@ -1,9 +1,6 @@
----
-layout: default
+layout: single
 title: About
-nav_order: 3
 permalink: /about/
----
 
 # About the proceedings
 
