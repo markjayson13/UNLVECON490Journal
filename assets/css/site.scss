@@ -116,13 +116,27 @@ a:hover {
   display: flex;
   align-items: center;
   box-shadow: var(--shadow);
-  background-size: cover;
+  background-color: #0f172a;
+  background-image: var(--hero-overlay, none), var(--hero-image, none);
+  background-size: cover, cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.65));
+  mix-blend-mode: multiply;
+  pointer-events: none;
 }
 
 .hero-content {
   color: var(--white);
   max-width: 620px;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content h1 {

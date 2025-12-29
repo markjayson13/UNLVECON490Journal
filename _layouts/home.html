@@ -8,6 +8,7 @@ layout: base
 {% assign primary_cta_link = page.primary_cta_link | default: '/issues/' %}
 {% assign secondary_cta_label = page.secondary_cta_label | default: 'Read More' %}
 {% assign secondary_cta_link = page.secondary_cta_link | default: '/about/' %}
+{% assign hero_overlay = page.hero_overlay | default: '/assets/images/hero-overlay.png' %}
 
 {% assign issues = site.pages | where: "is_issue", true | sort: "issue_order" | reverse %}
 {% assign latest_issue = issues | first %}
@@ -18,7 +19,7 @@ layout: base
 
 <section
   class="hero-banner"
-  style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('{{ hero_image | relative_url }}');"
+  style="--hero-image: url('{{ hero_image | relative_url }}'); --hero-overlay: url('{{ hero_overlay | relative_url }}');"
 >
   <div class="container hero-content">
     <p class="eyebrow">Undergraduate Economics Journal</p>
