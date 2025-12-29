@@ -10,5 +10,5 @@ nav_order: 2
 has_children: true
 permalink: /issues/2024-spring/
 issue_id: 2024-spring
-description: Student research from the Spring 2024 ECON 490 cohort.
+description: Student research from the Spring 2024 ECON 495 cohort.
 ---
