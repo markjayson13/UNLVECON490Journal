@@ -1,21 +1,15 @@
 ---
-layout: splash
+layout: home
 permalink: /
-title: "UNLV Economics Working Papers"
-header:
-  overlay_image: /assets/images/lee-business-school.jpg
-  overlay_color: "rgba(177, 2, 2, 0.55)"
-  overlay_filter: "rgba(177, 2, 2, 0.55)"
-  caption: "Lee Business School (placeholder image)"
-  actions:
-    - label: "Browse Issues"
-      url: "/issues/"
-      class: "btn btn--primary"
-    - label: "About"
-      url: "/about/"
-      class: "btn btn--inverse"
-excerpt: "A public archive of research papers by UNLV economics undergraduates."
-classes: home-hero
+title: "UNLV ECON 495 Journal"
+hero_heading: "UNLV ECON 495 Journal"
+hero_subheading: "A working paper series of undergraduate capstone research from UNLV Economics."
+hero_image: "/assets/images/hero.jpg"
+hero_overlay: "/assets/images/hero-overlay.png"
+primary_cta_label: "Browse Issues"
+primary_cta_link: "/issues/"
+secondary_cta_label: "About the Journal"
+secondary_cta_link: "/about/"
 ---
 
 <div class="home-intro">
