@@ -12,7 +12,16 @@ permalink: /categories/
 <section class="container-wide content-section">
   <div class="cat-grid">
     {% for category in site.data.categories %}
-      <a class="cat-box" href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">
+      {% assign tone = 'cat-grey' %}
+      {% if category.name == 'Applied Microeconomics'
+        or category.name == 'Economic Growth'
+        or category.name == 'Health'
+        or category.name == 'International'
+        or category.name == 'Finance'
+        or category.name == 'Environmental and Resource' %}
+        {% assign tone = 'cat-black' %}
+      {% endif %}
+      <a class="cat-box {{ tone }}" href="{{ '/categories/' | append: category.slug | append: '/' | relative_url }}">
         <span class="cat-title">{{ category.name }}</span>
       </a>
     {% endfor %}

@@ -1,5 +1,5 @@
 title: UNLV ECON 495 Journal
-tagline: A working paper series of undergraduate capstone research from UNLV Economics.
+tagline: A working paper series of undergraduate capstone research from UNLV Economics
 description: A working paper series of undergraduate capstone research from UNLV Economics.
 contact_email: "farolmarkjayson@yahoo.com"
 author:
@@ -19,6 +19,11 @@ plugins:
   - jekyll-include-cache
   - jekyll-sitemap
   - jekyll-remote-theme
+
+social_links:
+  unlv: "https://www.unlv.edu"
+  business: "https://www.unlv.edu/business"
+  economics: "https://www.unlv.edu/economics"
 
 defaults:
   - scope:

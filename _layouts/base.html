@@ -46,9 +46,11 @@
   </head>
   <body>
     <header class="site-header">
-      <div class="container brand-block">
-        <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
-        <p class="site-tagline">{{ site.tagline | default: site.description }}</p>
+      <div class="site-banner">
+        <div class="container brand-block">
+          <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+          <p class="site-tagline">{{ site.tagline | default: site.description }}</p>
+        </div>
       </div>
       <nav class="main-nav" aria-label="Primary">
         <div class="container">
@@ -67,12 +69,6 @@
       {{ content }}
     </main>
 
-    <footer class="site-footer">
-      <div class="container footer-inner">
-        <span>{{ site.title }}</span>
-        <span class="divider">•</span>
-        <span>Contact: <a href="mailto:{{ site.contact_email | default: 'farolmarkjayson@yahoo.com' }}">{{ site.contact_email | default: 'farolmarkjayson@yahoo.com' }}</a></span>
-      </div>
-    </footer>
+    {% include site_footer.html %}
   </body>
 </html>
