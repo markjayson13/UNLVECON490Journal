@@ -1,48 +1,61 @@
 ---
-layout: single
+layout: base
 ---
-{% assign display_title = page.title %}
+{% assign clean_title = page.title %}
 {% if page.title contains ":" %}
-  {% assign display_title = page.title | split: ":" | last | strip %}
+  {% assign parts = page.title | split: ":" %}
+  {% if parts.first contains "Paper" %}
+    {% assign clean_title = parts.last | strip %}
+  {% endif %}
 {% endif %}
-{% assign issue_page = site.pages | where: "issue_id", page.issue_id | first %}
-{% assign issue_label = page.issue_title | default: issue_page.title %}
 {% assign pdf_path = page.pdf_path | default: page.pdf %}
+{% assign issue_page = site.pages | where: "issue_slug", page.issue_slug | first %}
 
-<div class="paper-header">
-  <h1 class="paper-title">{{ display_title }}</h1>
-  {% if issue_label %}
-    <p class="paper-meta"><strong>Issue:</strong> {{ issue_label }}</p>
+<article class="container paper-page content-section page-container">
+  <p class="eyebrow">Paper</p>
+  <h1>{{ clean_title }}</h1>
+  {% if page.subtitle %}
+    <p class="lede">{{ page.subtitle }}</p>
   {% endif %}
-  {% if page.publication_date or page.year %}
-    <p class="paper-meta"><strong>Publication date:</strong> {{ page.publication_date | default: page.year }}</p>
-  {% endif %}
+
+  <div class="paper-meta">
+    {% if page.issue_slug %}
+      <a class="pill link" href="{{ '/issues/' | append: page.issue_slug | append: '/' | relative_url }}">
+        {{ page.issue_title | default: page.issue_slug | default: page.issue_id }}
+      </a>
+    {% endif %}
+    {% if page.publication_date %}
+      <span class="pill">{{ page.publication_date }}</span>
+    {% endif %}
+    {% if page.keywords %}
+      <span class="pill light">{{ page.keywords | join: ", " }}</span>
+    {% endif %}
+  </div>
+
   {% if page.authors %}
-    <p class="paper-meta"><strong>Authors:</strong> {{ page.authors | join: ", " }}</p>
+    <p class="muted small">By {{ page.authors | join: ", " }}</p>
   {% endif %}
-  {% if page.keywords %}
-    <p class="paper-keywords"><strong>Keywords:</strong> {{ page.keywords | join: ", " }}</p>
-  {% endif %}
-</div>
 
-<div class="paper-actions">
   {% if pdf_path %}
-    <a class="btn btn--primary" href="{{ pdf_path | relative_url }}">Download PDF</a>
+    <div class="download-block">
+      <a class="btn btn-primary" href="{{ pdf_path | relative_url }}">Download PDF</a>
+    </div>
   {% endif %}
-  {% if issue_page %}
-    <a class="btn btn-secondary" href="{{ issue_page.url | relative_url }}">Back to Issue</a>
+
+  {% if page.abstract %}
+    <section class="paper-abstract card">
+      <h2>Abstract</h2>
+      <p>{{ page.abstract }}</p>
+    </section>
   {% endif %}
-</div>
 
-{% if page.abstract %}
-  <div class="paper-abstract">
-    <h2>Abstract</h2>
-    {{ page.abstract | markdownify }}
-  </div>
-{% endif %}
-
-{% if content %}
-  <div class="page__content">
+  <section class="paper-body">
     {{ content }}
-  </div>
-{% endif %}
+  </section>
+
+  {% if issue_page %}
+    <div class="back-link">
+      <a href="{{ issue_page.url | relative_url }}" class="link-inline">Back to issue</a>
+    </div>
+  {% endif %}
+</article>

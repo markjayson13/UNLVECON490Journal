@@ -1,10 +1,8 @@
-layout: single
+layout: page
 title: Permissions
 parent: Policies
 nav_order: 1
 permalink: /policies/permissions/
-
-# Permissions and licensing
 
 - Authors retain copyright to their work.
 - By submitting, authors grant the proceedings a non-exclusive license to host, display, and archive the PDF and metadata.

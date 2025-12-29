@@ -1,0 +1,12 @@
+---
+layout: base
+---
+<section class="container content-section page-container">
+  {% unless page.hide_title %}
+    <h1 class="page-title">{{ page.title }}</h1>
+    {% if page.description %}
+      <p class="lede">{{ page.description }}</p>
+    {% endif %}
+  {% endunless %}
+  {{ content }}
+</section>

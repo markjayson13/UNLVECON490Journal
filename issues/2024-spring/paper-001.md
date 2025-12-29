@@ -22,21 +22,3 @@ parent: Spring 2024
 grand_parent: Issues
 nav_order: 1
 ---
-
-# {{ page.title }}
-
-**Authors:** {{ page.authors | join: ", " }}  
-**Publication date:** {{ page.publication_date | default: page.year }}  
-**Issue:** Spring 2024
-
-## Abstract
-
-{{ page.abstract }}
-
-## Download
-
-[Download PDF]({{ page.pdf | relative_url }}){: .btn .btn--primary }
-
-## Citation
-
-Citation details forthcoming.

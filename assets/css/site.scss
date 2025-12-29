@@ -1,0 +1,368 @@
+---
+---
+@charset "utf-8";
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --grey: #666666;
+  --red: #b10202;
+  --border: #e8e8e8;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  --container: 1100px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--black);
+  background: var(--white);
+  line-height: 1.7;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.page-title {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  margin: 0 0 0.6rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--red);
+}
+
+.container {
+  width: min(100%, var(--container));
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+.site-header {
+  padding: 2.5rem 0 0.75rem;
+  text-align: center;
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.site-title {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(2rem, calc(3vw + 1rem), 3rem);
+  letter-spacing: 0.5px;
+}
+
+.site-tagline {
+  margin: 0;
+  color: var(--grey);
+  font-size: 1rem;
+}
+
+.main-nav {
+  border-top: 1px solid var(--border);
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0;
+  padding: 0.85rem 0;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--grey);
+}
+
+.main-nav a {
+  padding: 0.25rem 0.35rem;
+  transition: color 150ms ease, border-color 150ms ease;
+  border-bottom: 2px solid transparent;
+}
+
+.main-nav a:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.hero-banner {
+  position: relative;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  width: min(100%, calc(var(--container) + 2.5rem));
+  height: clamp(420px, 60vw, 600px);
+  border-radius: 18px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow);
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  color: var(--white);
+  max-width: 620px;
+}
+
+.hero-content h1 {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  font-size: clamp(2.4rem, calc(3vw + 1rem), 3.6rem);
+  margin: 0.35rem 0 0.5rem;
+}
+
+.hero-subtitle {
+  color: #f2f2f2;
+  margin: 0 0 1.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.page-body {
+  padding-bottom: 3rem;
+}
+
+.content-section {
+  margin: 3rem auto;
+}
+
+.page-container {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+.paper-card h2,
+.paper-card h3 {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+  font-family: "Playfair Display", "Times New Roman", serif;
+}
+
+.paper-card p {
+  margin: 0.35rem 0;
+}
+
+.paper-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: #f2f2f2;
+  color: var(--grey);
+  font-size: 0.8rem;
+  letter-spacing: 0.02em;
+}
+
+.pill.light {
+  background: #fafafa;
+}
+
+.pill.link {
+  background: #f8f8f8;
+  color: var(--red);
+  border: 1px solid var(--border);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border-radius: 999px;
+  padding: 0.65rem 1.2rem;
+  border: 1px solid var(--black);
+  color: var(--black);
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 150ms ease;
+}
+
+.btn-small {
+  padding: 0.55rem 1rem;
+  font-size: 0.9rem;
+}
+
+.btn-primary {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+.btn-primary:hover {
+  background: #910101;
+  border-color: #910101;
+}
+
+.btn-outline {
+  background: transparent;
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.btn-outline:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+}
+
+.paper-page h1 {
+  font-family: "Playfair Display", "Times New Roman", serif;
+  margin-bottom: 0.25rem;
+}
+
+.paper-page .paper-meta {
+  margin: 0.75rem 0 0.5rem;
+}
+
+.paper-page .download-block {
+  margin: 1.25rem 0;
+}
+
+.paper-abstract {
+  margin-bottom: 1.5rem;
+}
+
+.paper-body {
+  border-top: 1px solid var(--border);
+  padding-top: 1.25rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  color: var(--red);
+  margin: 0;
+}
+
+.lede {
+  color: var(--grey);
+  margin-top: 0.35rem;
+}
+
+.muted {
+  color: var(--grey);
+}
+
+.muted.small {
+  font-size: 0.95rem;
+}
+
+.hero-subtitle,
+.muted.small {
+  line-height: 1.6;
+}
+
+.link-inline {
+  color: var(--red);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.link-inline:hover {
+  text-decoration: underline;
+}
+
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 1.5rem 0;
+  background: #fafafa;
+  color: var(--grey);
+}
+
+.footer-inner {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+.footer-inner .divider {
+  opacity: 0.6;
+}
+
+@media (max-width: 800px) {
+  .main-nav ul {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-banner {
+    border-radius: 0;
+    width: 100%;
+  }
+}
