@@ -1,7 +1,7 @@
 # Author Permission Form (non-exclusive license)
 
 ```
-UNLV ECON 490 Capstone Proceedings
+UNLV ECON 495 Capstone Proceedings
 Non-Exclusive License to Publish
 
 Paper title: ____________________________________________
@@ -18,7 +18,7 @@ Name: __________________________  Signature: _____________  Date: ____________
 
 License grant:
 - We retain copyright to the work named above.
-- We grant UNLV ECON 490 Capstone Proceedings a non-exclusive license to host and display the PDF and related metadata online.
+- We grant UNLV ECON 495 Capstone Proceedings a non-exclusive license to host and display the PDF and related metadata online.
 - We confirm that the work is original, properly cites sources, and does not include confidential or prohibited data.
 - We may request corrections or removal later, understanding that public copies might persist in caches or mirrors.
 

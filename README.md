@@ -1,4 +1,4 @@
-# UNLV ECON 490 Capstone Proceedings
+# UNLV ECON 495 Capstone Proceedings
 
 Static GitHub Pages site built with **Jekyll + Minimal Mistakes**. Papers are organized by issue (semester + year). Each paper page exposes its abstract, metadata, and PDF link plus Google Scholar–friendly citation tags.
 
