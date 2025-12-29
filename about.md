@@ -6,7 +6,7 @@ permalink: /about/
 
 <section class="container-wide content-section">
   <h1 class="center-title">Overview</h1>
-  <p>This journal is founded by Professor Djeto Assane and Mark Jayson Farol to serve as a journal for undergraduate working paper series featuring final capstone research produced in ECON 495 (Seminar in Economic Research) at the University of Nevada, Las Vegas (UNLV). Each paper begins as a senior capstone project and culminates in a written research paper and an oral presentation.</p>
+  <p>This journal is founded by Professor Djeto Assane and Mark Jayson Farol to serve as a journal for undergraduate working paper series featuring final capstone research produced in ECON 495 (Seminar in Economic Research) at the University of Nevada, Las Vegas (UNLV). Each paper begins as a senior capstone project and culminates in a written research paper and an oral presentation. Issues are posted by semester and year, and papers are grouped under the issue in which they were released.</p>
   <p>Each entry is student-authored capstone work that may be revised as skills develop and feedback arrives. Readers should cite these pieces as working papers rather than peer-reviewed articles, noting that methods and interpretations can evolve. The journal treats the series as a discoverable and citable archive that documents students’ applied research in progress. Papers remain accessible so future cohorts can see how questions, data, and modeling choices are refined over time. This transparency helps situate the work within the broader research conversation while acknowledging its in-progress status.</p>
 </section>
 
