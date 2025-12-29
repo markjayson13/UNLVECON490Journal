@@ -13,8 +13,8 @@ permalink: /about/
   <h2>Founders</h2>
   <div class="grid-2">
     <article class="founder-card founder-red">
-      <div class="founder-media" style="background-image: url('{{ '/assets/images/assane.jpg' | relative_url }}'); background-size: cover; background-position: center;">
-        <span>Image coming soon</span>
+      <div class="founder-media">
+        <img class="founder-img" src="{{ '/assets/images/assane.jpg' | relative_url }}" alt="Professor Djeto Assané" />
       </div>
       <div class="founder-body">
         <h3>Professor Djeto Assané</h3>
@@ -23,8 +23,8 @@ permalink: /about/
       </div>
     </article>
     <article class="founder-card founder-red">
-      <div class="founder-media" style="background-image: url('{{ '/assets/images/mark-jayson.jpg' | relative_url }}'); background-size: cover; background-position: center;">
-        <span>Image coming soon</span>
+      <div class="founder-media">
+        <img class="founder-img" src="{{ '/assets/images/mark-jayson.jpg' | relative_url }}" alt="Mark Jayson Farol" />
       </div>
       <div class="founder-body">
         <h3>Mark Jayson Farol</h3>

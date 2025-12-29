@@ -15,6 +15,11 @@
   --shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
   --container: 1400px;
   --container-wide: 1400px;
+  --hero-content-offset: clamp(3rem, 6vw, 6.875rem);
+  --hero-content-offset-mobile: 1.75rem;
+  --hero-content-padding-mobile: 1.75rem 0;
+  --hero-text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  --founder-image-position: center 20%;
 }
 
 *,
@@ -29,7 +34,11 @@ body {
   color: var(--black);
   background: var(--white);
   font-size: 17px;
-  line-height: 1.65;
+  line-height: 1.6;
+}
+
+p {
+  margin: 0 0 1.05rem;
 }
 
 h1,
@@ -50,11 +59,11 @@ h1,
 }
 
 h2 {
-  font-size: clamp(1.75rem, calc(1.2vw + 1.25rem), 2rem);
+  font-size: clamp(1.5rem, calc(1vw + 1.05rem), 1.875rem);
 }
 
 h3 {
-  font-size: clamp(1.25rem, calc(0.8vw + 1.05rem), 1.375rem);
+  font-size: clamp(1.25rem, calc(0.6vw + 1.05rem), 1.375rem);
 }
 
 a {
@@ -165,10 +174,11 @@ a:hover {
   max-width: var(--container-wide);
   min-height: 600px;
   height: clamp(600px, 68vw, 680px);
+  padding: var(--hero-content-offset);
   border-radius: 18px;
   overflow: hidden;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   box-shadow: var(--shadow);
   background-color: var(--hero-red);
   background-image: linear-gradient(rgba(177, 2, 2, 0.25), rgba(177, 2, 2, 0.25)),
@@ -197,32 +207,37 @@ a:hover {
 
 .hero-content {
   color: var(--white);
-  max-width: 620px;
+  max-width: 720px;
   position: relative;
   z-index: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 .hero-content h1 {
   font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(2.4rem, calc(3vw + 1rem), 3.6rem);
   margin: 0.35rem 0 0.5rem;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
 }
 
 .hero-subtitle {
   color: #ffffff;
   margin: 0 0 1.5rem;
+  text-shadow: var(--hero-text-shadow);
 }
 
 .hero-banner,
 .hero-banner h1,
 .hero-banner .hero-subtitle {
   color: #ffffff;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
 }
 
 .hero-banner .eyebrow {
   color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  text-shadow: var(--hero-text-shadow);
 }
 
 .hero-banner .btn-outline {
@@ -281,7 +296,7 @@ a:hover {
 
 .center-title {
   text-align: center;
-  font-size: 44px;
+  font-size: clamp(2.125rem, calc(2vw + 1.5rem), 2.75rem);
   margin: 12px 0 18px;
 }
 
@@ -733,12 +748,20 @@ a:hover {
 }
 
 .founder-media {
-  height: 180px;
-  background: rgba(177, 2, 2, 0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #222;
+  height: 220px;
+  background: #f6f6f6;
+  overflow: hidden;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  position: relative;
+}
+
+.founder-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: var(--founder-image-position);
+  display: block;
 }
 
 .founder-body {
@@ -794,6 +817,22 @@ a:hover {
 
 .footer-inner .divider {
   opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .hero-banner {
+    padding: var(--hero-content-offset-mobile);
+  }
+
+  .hero-content {
+    position: relative;
+    padding: var(--hero-content-padding-mobile);
+    max-width: 100%;
+  }
+
+  .founder-media {
+    height: 180px;
+  }
 }
 
 @media (max-width: 1100px) {
