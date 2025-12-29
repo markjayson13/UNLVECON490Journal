@@ -18,8 +18,24 @@ REQUIRED_FIELDS = [
     "publication_date",
     "authors",
     "keywords",
+    "categories",
     "abstract",
     "pdf_path",
+]
+ALLOWED_CATEGORIES = [
+    "Applied Microeconomics",
+    "Macroeconomics",
+    "Economic Growth",
+    "Public and Policy",
+    "Labor and Demography",
+    "Health",
+    "Education",
+    "International",
+    "Finance",
+    "IO and Strategy",
+    "Environmental and Resource",
+    "Economic History and Institutions",
+    "Methods and Econometrics",
 ]
 
 
@@ -98,6 +114,18 @@ def validate_paper(path: Path, ci: bool) -> Tuple[int, int]:
     if not fm.get("keywords"):
         warnings += 1
         print(f"[WARN ] {path.relative_to(ROOT)} has no keywords.")
+
+    categories = fm.get("categories") or []
+    if not categories:
+        warnings += 1
+        print(f"[WARN ] {path.relative_to(ROOT)} has no categories.")
+    else:
+        invalid = [c for c in categories if c not in ALLOWED_CATEGORIES]
+        if invalid:
+            warnings += 1
+            print(
+                f"[WARN ] {path.relative_to(ROOT)} has categories not in allowed list: {', '.join(invalid)}"
+            )
 
     abstract = fm.get("abstract", "")
     if isinstance(abstract, str) and len(abstract.strip().split()) < 20:

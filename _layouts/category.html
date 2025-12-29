@@ -1,22 +1,24 @@
 ---
 layout: single
 ---
-{% assign issue_papers = site.pages | where: "is_paper", true | where: "issue_slug", page.issue_slug | sort: "publication_date" | reverse %}
+{% assign papers = site.pages | where: "is_paper", true %}
+{% assign category_name = page.category_name | default: page.title %}
+{% assign category_papers = papers | where_exp: "paper", "paper.categories contains category_name" %}
 
-<p class="eyebrow">Issue</p>
-<h1>{{ page.issue_title | default: page.title }}</h1>
+<p class="eyebrow">Category</p>
+<h1>{{ category_name }}</h1>
 {% if page.description %}
-  <p class="lede">{{ page.description }}</p>
+  <p class="muted">{{ page.description }}</p>
 {% endif %}
 
-{% if issue_papers and issue_papers.size > 0 %}
+{% if category_papers and category_papers.size > 0 %}
   <div class="card-grid">
-    {% for paper in issue_papers %}
+    {% for paper in category_papers %}
       {% assign clean_title = paper.title %}
       {% if paper.title contains ":" %}
-        {% assign parts = paper.title | split: ":" %}
-        {% if parts.first contains "Paper" %}
-          {% assign clean_title = parts.last | strip %}
+        {% assign title_parts = paper.title | split: ":" %}
+        {% if title_parts.first contains "Paper" %}
+          {% assign clean_title = title_parts.last | strip %}
         {% endif %}
       {% endif %}
       {% assign pdf_path = paper.pdf_path | default: paper.pdf %}
@@ -25,17 +27,16 @@ layout: single
           {% if paper.publication_date %}
             <span class="pill">{{ paper.publication_date }}</span>
           {% endif %}
-          <span class="pill light">{{ page.issue_title | default: page.title }}</span>
+          {% if paper.issue_title or paper.issue_slug %}
+            <span class="pill light">{{ paper.issue_title | default: paper.issue_slug }}</span>
+          {% endif %}
         </div>
-        <h2><a href="{{ paper.url | relative_url }}">{{ clean_title }}</a></h2>
+        <h3><a href="{{ paper.url | relative_url }}">{{ clean_title }}</a></h3>
         {% if paper.authors %}
           <p class="muted small">By {{ paper.authors | join: ", " }}</p>
         {% endif %}
-        {% if paper.categories %}
-          <p class="muted small">Categories: {{ paper.categories | join: ", " }}</p>
-        {% endif %}
         {% if paper.abstract %}
-          <p class="muted">{{ paper.abstract | strip_html | truncatewords: 48 }}</p>
+          <p class="muted">{{ paper.abstract | strip_html | truncatewords: 40 }}</p>
         {% endif %}
         <div class="card-actions">
           <a class="btn btn-small" href="{{ paper.url | relative_url }}">Read abstract</a>
@@ -47,5 +48,5 @@ layout: single
     {% endfor %}
   </div>
 {% else %}
-  <p class="muted">No papers are available for this issue yet.</p>
+  <p class="muted">No papers yet in this category.</p>
 {% endif %}

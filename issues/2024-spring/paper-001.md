@@ -14,6 +14,9 @@ keywords:
   - Bennett's Hypothesis
   - Tuition
   - Financial Aid
+categories:
+  - Education
+  - Public and Policy
 pdf: /assets/papers/2024-spring/paper-001.pdf
 pdf_path: /assets/papers/2024-spring/paper-001.pdf
 abstract: |

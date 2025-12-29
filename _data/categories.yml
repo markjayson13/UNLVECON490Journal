@@ -1,0 +1,26 @@
+- name: Applied Microeconomics
+  slug: applied-microeconomics
+- name: Macroeconomics
+  slug: macroeconomics
+- name: Economic Growth
+  slug: economic-growth
+- name: Public and Policy
+  slug: public-and-policy
+- name: Labor and Demography
+  slug: labor-and-demography
+- name: Health
+  slug: health
+- name: Education
+  slug: education
+- name: International
+  slug: international
+- name: Finance
+  slug: finance
+- name: IO and Strategy
+  slug: io-and-strategy
+- name: Environmental and Resource
+  slug: environmental-and-resource
+- name: Economic History and Institutions
+  slug: economic-history-and-institutions
+- name: Methods and Econometrics
+  slug: methods-and-econometrics

@@ -1,44 +1,23 @@
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-{% assign is_paper = page.is_paper or page.paper_id %}
-{% if is_paper %}
-  {% assign clean_title = page.title %}
-  {% if clean_title contains ":" %}
-    {% assign clean_title = clean_title | split: ":" | last | strip %}
+{% if page.is_paper %}
+  {% assign citation_title = page.title %}
+  {% if page.title contains ":" %}
+    {% assign title_parts = page.title | split: ":" %}
+    {% if title_parts.first contains "Paper" %}
+      {% assign citation_title = title_parts.last | strip %}
+    {% endif %}
   {% endif %}
-
-  <meta name="citation_title" content="{{ clean_title | escape }}">
-
+  {% assign pdf_path = page.pdf_path | default: page.pdf %}
+  <meta name="citation_title" content="{{ citation_title }}" />
   {% if page.authors %}
     {% for author in page.authors %}
-      <meta name="citation_author" content="{{ author | escape }}">
+      <meta name="citation_author" content="{{ author }}" />
     {% endfor %}
   {% endif %}
-
   {% if page.publication_date %}
-    <meta name="citation_publication_date" content="{{ page.publication_date | replace: '-', '/' }}">
-  {% elsif page.year %}
-    <meta name="citation_publication_date" content="{{ page.year }}/01/01">
+    <meta name="citation_publication_date" content="{{ page.publication_date | date: '%Y/%m/%d' }}" />
   {% endif %}
-
-  {% assign pdf_path = page.pdf_path | default: page.pdf %}
   {% if pdf_path %}
-    <meta name="citation_pdf_url" content="{{ site.url }}{{ site.baseurl }}{{ pdf_path }}">
+    <meta name="citation_pdf_url" content="{{ pdf_path | absolute_url }}" />
   {% endif %}
-
-  <meta name="citation_abstract_html_url" content="{{ site.url }}{{ site.baseurl }}{{ page.url }}">
-
-  {% if page.abstract %}
-    <meta name="citation_abstract" content="{{ page.abstract | strip_newlines | strip | escape }}">
-  {% endif %}
-
-  {% if page.keywords %}
-    {% assign kw = page.keywords %}
-    {% if kw.first %}
-      {% assign kw = kw | join: ', ' %}
-    {% endif %}
-    <meta name="citation_keywords" content="{{ kw | escape }}">
-  {% endif %}
+  <meta name="citation_abstract_html_url" content="{{ page.url | absolute_url }}" />
 {% endif %}

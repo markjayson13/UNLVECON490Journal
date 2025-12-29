@@ -1,12 +1,12 @@
 ---
-layout: base
+layout: single
 title: Papers
 permalink: /papers/
 ---
 {% assign papers = site.pages | where: "is_paper", true %}
 {% assign issues = site.pages | where: "is_issue", true | sort: "issue_order" | reverse %}
 
-<section class="container content-section page-container">
+<div class="page__content">
   <p class="eyebrow">All Papers</p>
   <h1>Papers by issue</h1>
   <p class="muted">Browse every paper organized by semester release.</p>
@@ -54,4 +54,4 @@ permalink: /papers/
   {% else %}
     <p class="muted">No papers available yet.</p>
   {% endif %}
-</section>
+</div>

@@ -12,6 +12,8 @@ authors:
 {{AUTHORS_BLOCK}}
 keywords:
 {{KEYWORDS_BLOCK}}
+categories:
+{{CATEGORIES_BLOCK}}
 abstract: |
   {{ABSTRACT_TEXT}}
 pdf_path: "/assets/papers/{{ISSUE_SLUG}}/paper-{{PAPER_NUMBER}}.pdf"

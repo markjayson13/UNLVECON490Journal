@@ -1,12 +1,9 @@
-- title: Home
-  url: /
-- title: Issues
-  url: /issues/
-- title: Papers
-  url: /papers/
-- title: Policies
-  url: /policies/
-- title: About
-  url: /about/
-- title: Contact
-  url: "mailto:econ490journal@unlv.edu"
+main:
+  - title: Home
+    url: /
+  - title: Issues
+    url: /issues/
+  - title: Categories
+    url: /categories/
+  - title: About
+    url: /about/

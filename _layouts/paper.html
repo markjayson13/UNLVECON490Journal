@@ -1,5 +1,5 @@
 ---
-layout: base
+layout: single
 ---
 {% assign clean_title = page.title %}
 {% if page.title contains ":" %}
@@ -11,51 +11,54 @@ layout: base
 {% assign pdf_path = page.pdf_path | default: page.pdf %}
 {% assign issue_page = site.pages | where: "issue_slug", page.issue_slug | first %}
 
-<article class="container paper-page content-section page-container">
-  <p class="eyebrow">Paper</p>
-  <h1>{{ clean_title }}</h1>
-  {% if page.subtitle %}
-    <p class="lede">{{ page.subtitle }}</p>
-  {% endif %}
+<p class="eyebrow">Paper</p>
+<h1>{{ clean_title }}</h1>
+{% if page.subtitle %}
+  <p class="lede">{{ page.subtitle }}</p>
+{% endif %}
 
-  <div class="paper-meta">
-    {% if page.issue_slug %}
-      <a class="pill link" href="{{ '/issues/' | append: page.issue_slug | append: '/' | relative_url }}">
-        {{ page.issue_title | default: page.issue_slug | default: page.issue_id }}
-      </a>
-    {% endif %}
-    {% if page.publication_date %}
-      <span class="pill">{{ page.publication_date }}</span>
-    {% endif %}
-    {% if page.keywords %}
-      <span class="pill light">{{ page.keywords | join: ", " }}</span>
-    {% endif %}
+<div class="paper-meta">
+  {% if page.issue_slug %}
+    <a class="pill link" href="{{ '/issues/' | append: page.issue_slug | append: '/' | relative_url }}">
+      {{ page.issue_title | default: page.issue_slug | default: page.issue_id }}
+    </a>
+  {% endif %}
+  {% if page.publication_date %}
+    <span class="pill">{{ page.publication_date }}</span>
+  {% endif %}
+  {% if page.categories %}
+    {% for cat in page.categories %}
+      <span class="pill light">{{ cat }}</span>
+    {% endfor %}
+  {% endif %}
+  {% if page.keywords %}
+    <span class="pill light">{{ page.keywords | join: ", " }}</span>
+  {% endif %}
+</div>
+
+{% if page.authors %}
+  <p class="muted small">By {{ page.authors | join: ", " }}</p>
+{% endif %}
+
+{% if pdf_path %}
+  <div class="download-block">
+    <a class="btn btn-primary" href="{{ pdf_path | relative_url }}">Download PDF</a>
   </div>
+{% endif %}
 
-  {% if page.authors %}
-    <p class="muted small">By {{ page.authors | join: ", " }}</p>
-  {% endif %}
-
-  {% if pdf_path %}
-    <div class="download-block">
-      <a class="btn btn-primary" href="{{ pdf_path | relative_url }}">Download PDF</a>
-    </div>
-  {% endif %}
-
-  {% if page.abstract %}
-    <section class="paper-abstract card">
-      <h2>Abstract</h2>
-      <p>{{ page.abstract }}</p>
-    </section>
-  {% endif %}
-
-  <section class="paper-body">
-    {{ content }}
+{% if page.abstract %}
+  <section class="paper-abstract card">
+    <h2>Abstract</h2>
+    <p>{{ page.abstract }}</p>
   </section>
+{% endif %}
 
-  {% if issue_page %}
-    <div class="back-link">
-      <a href="{{ issue_page.url | relative_url }}" class="link-inline">Back to issue</a>
-    </div>
-  {% endif %}
-</article>
+<section class="paper-body">
+  {{ content }}
+</section>
+
+{% if issue_page %}
+  <div class="back-link">
+    <a href="{{ issue_page.url | relative_url }}" class="link-inline">Back to issue</a>
+  </div>
+{% endif %}
