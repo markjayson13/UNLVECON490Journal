@@ -18,10 +18,10 @@ layout: base
 {% assign featured_papers = papers_with_dates | concat: papers_without_dates | slice: 0, 4 %}
 
 <section
-  class="hero-banner"
+  class="hero-banner hero-wide"
   style="--hero-image: url('{{ hero_image | relative_url }}'); --hero-overlay: url('{{ hero_overlay | relative_url }}');"
 >
-  <div class="container hero-content">
+  <div class="container-wide hero-content">
     <p class="eyebrow">Undergraduate Economics Journal</p>
     <h1>{{ hero_heading }}</h1>
     <p class="hero-subtitle">{{ hero_subheading }}</p>

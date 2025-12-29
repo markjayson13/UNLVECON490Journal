@@ -4,26 +4,25 @@ title: Contact
 permalink: /contact/
 ---
 
-<section class="container content-section page-header">
-  <h1>Contact</h1>
+<section class="container-wide content-section page-header">
   <p class="page-subtitle">Reach the journal team.</p>
 </section>
 
-<section class="container content-section">
+<section class="container-wide content-section">
   <div class="grid-2 contact-grid">
-    <article class="card info-card">
+    <article class="box info-card">
       <h3>Djeto Assané, Ph.D</h3>
       <p class="muted small"><a href="mailto:djeto.assane@unlv.edu">djeto.assane@unlv.edu</a></p>
     </article>
-    <article class="card info-card">
+    <article class="box info-card">
       <h3>Mark Jayson Farol, M.A.</h3>
       <p class="muted small"><a href="mailto:markjayson.farol@unlv.edu">markjayson.farol@unlv.edu</a></p>
     </article>
   </div>
 </section>
 
-<section class="container content-section">
-  <article class="card info-card">
+<section class="container-wide content-section">
+  <article class="dept-block">
     <h3>Department of Economics</h3>
     <p class="muted small">
       Mailing Address:<br />

@@ -5,24 +5,24 @@ permalink: /about/
 classes: wide
 ---
 
-<section class="container content-section page-header">
-  <h1>Overview</h1>
+<section class="container-wide content-section page-header center">
+  <h2>Overview</h2>
   <p class="page-subtitle">An undergraduate working paper series from UNLV Economics.</p>
 </section>
 
-<section class="container content-section">
+<section class="container-wide content-section">
   <article class="card text-block">
     <p>This journal is founded by Professor Djeto Assane and Mark Jayson Farol to serve as a journal for undergraduate working paper series featuring final capstone research produced in ECON 495 (Seminar in Economic Research) at the University of Nevada, Las Vegas (UNLV). Each paper begins as a senior capstone project and culminates in a written research paper and an oral presentation.</p>
   </article>
 </section>
 
-<section class="container content-section">
-  <div class="section-heading center">
+<section class="container-wide content-section">
+  <div class="section-heading">
     <p class="eyebrow">Founders</p>
     <h2>Founders</h2>
   </div>
   <div class="grid-2">
-    <article class="card profile-card">
+    <article class="founder-card">
       <div class="profile-photo" style="background-image: url('{{ '/assets/images/assane.jpg' | relative_url }}');">
         <span class="photo-fallback">Image coming soon</span>
       </div>
@@ -33,7 +33,7 @@ classes: wide
         <p>His research interests include, Institutions and Growth, Monetary Currency Areas, Software Copyright Infringement, and Spatial Hedonic Models. His recent publications have appeared in the Journal of Policy Modeling, Applied Economics, Applied Economics Letters, Journal of Development Studies, World Development, Applied Financial Economics and the American Journal of Agricultural Economics.</p>
       </div>
     </article>
-    <article class="card profile-card">
+    <article class="founder-card">
       <div class="profile-photo" style="background-image: url('{{ '/assets/images/mark-jayson.jpg' | relative_url }}');">
         <span class="photo-fallback">Image coming soon</span>
       </div>
@@ -47,7 +47,7 @@ classes: wide
   </div>
 </section>
 
-<section class="container content-section">
+<section class="container-wide content-section">
   <div class="content-stack">
     <article class="card text-block">
       <h2>What “working paper” means here</h2>

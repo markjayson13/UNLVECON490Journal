@@ -5,13 +5,13 @@ layout: single
 {% assign category_name = page.category_name | default: page.title %}
 {% assign category_papers = papers | where_exp: "paper", "paper.categories contains category_name" %}
 
-<section class="container content-section page-header">
+<section class="container-wide content-section page-header">
   <p class="eyebrow">Category</p>
   <h1>{{ category_name }}</h1>
   <p class="page-subtitle">{{ page.description | default: "Working papers tagged for " | append: category_name | append: "." }}</p>
 </section>
 
-<section class="container content-section">
+<section class="container-wide content-section">
   {% if category_papers and category_papers.size > 0 %}
     <div class="card-grid">
       {% for paper in category_papers %}
