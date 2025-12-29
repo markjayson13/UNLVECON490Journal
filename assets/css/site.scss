@@ -111,20 +111,20 @@ a:hover {
 
 .hero-banner {
   position: relative;
-  margin: 0 auto;
-  margin-top: 1rem;
-  width: min(100%, calc(var(--container) + 4.5rem));
-  height: clamp(460px, 64vw, 660px);
+  margin: 1.5rem auto 0;
+  width: min(100%, calc(var(--container) + 6rem));
+  height: clamp(560px, 68vw, 640px);
   border-radius: 18px;
   overflow: hidden;
   display: flex;
   align-items: center;
   box-shadow: var(--shadow);
   background-color: var(--hero-red);
-  background-image: linear-gradient(var(--hero-overlay), var(--hero-overlay-strong)),
-    var(--hero-image, linear-gradient(180deg, var(--hero-red) 0%, var(--hero-red-dark) 100%));
-  background-size: cover, cover;
-  background-position: center;
+  background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0.25)),
+    linear-gradient(rgba(177, 2, 2, 0.45), rgba(177, 2, 2, 0.45)),
+    var(--hero-image, linear-gradient(135deg, #b10202 0%, #7f0101 100%));
+  background-size: cover, cover, cover;
+  background-position: center, center, center;
   background-repeat: no-repeat;
 }
 
@@ -132,7 +132,7 @@ a:hover {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.35));
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.3));
   mix-blend-mode: multiply;
   pointer-events: none;
 }
@@ -200,6 +200,12 @@ a:hover {
   font-size: 1.05rem;
 }
 
+.page-note {
+  color: var(--grey);
+  font-size: 0.95rem;
+  margin-top: 0.35rem;
+}
+
 .card {
   background: var(--white);
   border: 1px solid var(--border);
@@ -212,6 +218,18 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.25rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
 }
 
 .content-stack {
@@ -302,6 +320,63 @@ a:hover {
 
 .contact-grid .card {
   height: 100%;
+}
+
+.box-card {
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.1rem 1.25rem;
+  background: #fff;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  color: inherit;
+  text-decoration: none;
+}
+
+.box-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+.year-section {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.25rem;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.year-section h2 {
+  margin-top: 0;
+}
+
+.semester-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.semester-card {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: #fafafa;
+}
+
+.semester-card h3 {
+  margin: 0;
+}
+
+.semester-card .muted {
+  margin: 0;
+}
+
+.semester-card .btn {
+  align-self: flex-start;
+  margin-top: 0.35rem;
 }
 
 .paper-meta {

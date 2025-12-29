@@ -1,8 +1,8 @@
 ---
 layout: single
 title: Issues
-permalink: /issues/
+permalink: /issues/page3/
 years_per_page: 5
-page_index: 1
+page_index: 3
 ---
 {% include issues-listing.html %}

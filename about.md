@@ -6,14 +6,12 @@ classes: wide
 ---
 
 <section class="container content-section page-header">
-  <p class="eyebrow">About</p>
-  <h1>About the Journal</h1>
+  <h1>Overview</h1>
   <p class="page-subtitle">An undergraduate working paper series from UNLV Economics.</p>
 </section>
 
 <section class="container content-section">
   <article class="card text-block">
-    <h2>Overview</h2>
     <p>This journal is founded by Professor Djeto Assane and Mark Jayson Farol to serve as a journal for undergraduate working paper series featuring final capstone research produced in ECON 495 (Seminar in Economic Research) at the University of Nevada, Las Vegas (UNLV). Each paper begins as a senior capstone project and culminates in a written research paper and an oral presentation.</p>
   </article>
 </section>
@@ -23,7 +21,7 @@ classes: wide
     <p class="eyebrow">Founders</p>
     <h2>Founders</h2>
   </div>
-  <div class="profile-grid">
+  <div class="grid-2">
     <article class="card profile-card">
       <div class="profile-photo" style="background-image: url('{{ '/assets/images/assane.jpg' | relative_url }}');">
         <span class="photo-fallback">Image coming soon</span>

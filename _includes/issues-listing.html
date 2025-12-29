@@ -1,0 +1,121 @@
+{% assign issue_pages = site.pages | where: "is_issue", true %}
+{% assign issues_meta = "" | split: "" %}
+{% for issue in issue_pages %}
+  {% assign url_parts = issue.url | split: '/' | reverse %}
+  {% assign url_slug = url_parts[0] %}
+  {% if url_slug == "" and url_parts.size > 1 %}
+    {% assign url_slug = url_parts[1] %}
+  {% endif %}
+  {% assign slug_source = issue.issue_slug | default: issue.slug | default: url_slug %}
+  {% assign slug_parts = slug_source | split: '-' %}
+  {% assign first_part = slug_parts[0] %}
+  {% assign last_part = slug_parts | last %}
+  {% assign year = nil %}
+  {% assign term = nil %}
+  {% if first_part and first_part.size == 4 %}
+    {% assign year = first_part %}
+    {% assign term = last_part %}
+  {% elsif last_part and last_part.size == 4 %}
+    {% assign year = last_part %}
+    {% assign term = first_part %}
+  {% endif %}
+  {% assign year = year | default: issue.issue_year %}
+  {% assign term = term | default: issue.issue_term | default: last_part %}
+  {% if year %}
+    {% assign term_clean = term | default: "" | downcase %}
+    {% capture packed %}{{ year }}|{{ term_clean }}|{{ issue.url | relative_url }}|{{ issue.issue_title | default: issue.title }}|{{ issue.description | default: "" }}{% endcapture %}
+    {% assign issues_meta = issues_meta | push: packed %}
+  {% endif %}
+{% endfor %}
+
+{% assign years_list = "" | split: "" %}
+{% for entry in issues_meta %}
+  {% assign parts = entry | split: "|" %}
+  {% assign years_list = years_list | push: parts[0] %}
+{% endfor %}
+{% assign years = years_list | uniq | sort | reverse %}
+
+{% assign per_page = page.years_per_page | default: 5 %}
+{% assign current_page = page.page_index | default: 1 %}
+{% assign total_pages = years.size | plus: per_page | minus: 1 | divided_by: per_page %}
+{% assign start_index = per_page | times: current_page | minus: per_page %}
+{% assign paged_years = years | slice: start_index, per_page %}
+
+<section class="container content-section page-header">
+  <h1>Issues</h1>
+  <p class="page-subtitle">Browse by semester</p>
+  <p class="page-note">Newest releases appear first.</p>
+</section>
+
+<section class="container content-section">
+  {% if paged_years and paged_years.size > 0 %}
+    {% for year in paged_years %}
+      <div class="year-section">
+        <h2>{{ year }}</h2>
+        <div class="semester-list">
+          {% assign fall_entries = "" | split: "" %}
+          {% assign spring_entries = "" | split: "" %}
+          {% assign other_entries = "" | split: "" %}
+          {% for entry in issues_meta %}
+            {% assign parts = entry | split: "|" %}
+            {% if parts[0] == year %}
+              {% assign term_label = parts[1] %}
+              {% if term_label contains "fall" %}
+                {% assign fall_entries = fall_entries | push: entry %}
+              {% elsif term_label contains "spring" %}
+                {% assign spring_entries = spring_entries | push: entry %}
+              {% else %}
+                {% assign other_entries = other_entries | push: entry %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign ordered_entries = fall_entries | concat: spring_entries | concat: other_entries %}
+          {% for entry in ordered_entries %}
+            {% assign parts = entry | split: "|" %}
+            {% assign issue_year = parts[0] %}
+            {% assign issue_term = parts[1] %}
+            {% assign issue_url = parts[2] %}
+            {% assign issue_title = parts[3] %}
+            {% assign issue_description = parts[4] | default: "Capstone cohort research." %}
+            {% assign term_display = issue_title %}
+            {% if issue_title == nil or issue_title == "" %}
+              {% assign term_display = issue_term | capitalize | append: " " | append: issue_year %}
+            {% endif %}
+            <article class="semester-card">
+              <h3>{{ term_display }}</h3>
+              <p class="muted">{{ issue_description }}</p>
+              <a class="btn btn-small btn-primary" href="{{ issue_url }}">View issue</a>
+            </article>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+
+    {% if total_pages > 1 %}
+      <div class="section-header">
+        <div class="muted small">
+          Page {{ current_page }} of {{ total_pages }}
+        </div>
+        <div class="card-actions">
+          {% if current_page > 1 %}
+            {% assign prev_page = current_page | minus: 1 %}
+            {% if prev_page == 1 %}
+              <a class="btn btn-small" href="{{ '/issues/' | relative_url }}">Previous</a>
+            {% else %}
+              <a class="btn btn-small" href="{{ '/issues/page' | append: prev_page | append: '/' | relative_url }}">Previous</a>
+            {% endif %}
+          {% endif %}
+          {% if current_page < total_pages %}
+            {% assign next_page = current_page | plus: 1 %}
+            <a class="btn btn-small" href="{{ '/issues/page' | append: next_page | append: '/' | relative_url }}">Next</a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  {% else %}
+    <div class="card">
+      <p class="muted">No issues have been published yet.</p>
+    </div>
+  {% endif %}
+</section>
