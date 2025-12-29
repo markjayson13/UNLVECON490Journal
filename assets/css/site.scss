@@ -220,7 +220,6 @@ a:hover {
   font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(2.4rem, calc(3vw + 1rem), 3.6rem);
   margin: 0.35rem 0 0.5rem;
-  /* Element-level text shadows keep headline readable while allowing other hero text to inherit defaults. */
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
 }
 
@@ -742,8 +741,6 @@ a:hover {
 }
 
 .founder-card {
-  display: flex;
-  flex-direction: column;
   border: 1px solid #e5e5e5;
   border-radius: 14px;
   overflow: hidden;
