@@ -117,7 +117,7 @@ a:hover {
   align-items: center;
   box-shadow: var(--shadow);
   background-color: #0f172a;
-  background-image: var(--hero-overlay), var(--hero-image);
+  background-image: var(--hero-overlay, none), var(--hero-image, none);
   background-size: cover, cover;
   background-position: center;
   background-repeat: no-repeat;

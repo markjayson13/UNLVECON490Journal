@@ -14,10 +14,10 @@ secondary_cta_link: "/about/"
 
 <div class="home-intro">
   <p class="eyebrow">Explore</p>
-  <h2>Browse by semester or category</h2>
-  <p>Find every working paper published by UNLV economics undergraduates. Use the issues page to view papers by semester, or jump into categories for topical browsing.</p>
+  <h2>Browse by semester or paper</h2>
+  <p>Find every working paper published by UNLV economics undergraduates. Use the issues page to view papers by semester, or jump into the papers page for direct browsing.</p>
   <div class="cta-buttons">
     <a class="btn btn--primary" href="{{ '/issues/' | relative_url }}">Browse Issues</a>
-    <a class="btn btn--secondary" href="{{ '/categories/' | relative_url }}">Browse Categories</a>
+    <a class="btn btn--secondary" href="{{ '/papers/' | relative_url }}">Browse Papers</a>
   </div>
 </div>

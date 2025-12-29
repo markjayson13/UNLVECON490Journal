@@ -56,7 +56,7 @@
             <li><a href="{{ '/issues/' | relative_url }}">Issues</a></li>
             <li><a href="{{ '/papers/' | relative_url }}">Papers</a></li>
             <li><a href="{{ '/about/' | relative_url }}">About</a></li>
-            <li><a href="mailto:{{ site.contact_email | default: 'farolmarkjayson@yahoo.com' }}">Contact</a></li>
+            <li><a href="mailto:{{ site.contact_email | default: site.author.email }}" title="Email us">Contact</a></li>
           </ul>
         </div>
       </nav>

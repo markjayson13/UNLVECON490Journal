@@ -25,7 +25,7 @@ defaults:
       path: "index.md"
       type: "pages"
     values:
-      layout: splash
+      layout: home
   - scope:
       path: "issues"
       type: "pages"
