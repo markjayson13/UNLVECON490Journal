@@ -55,7 +55,7 @@ Checks required front matter, keywords/abstract length, and PDF existence.
 GitHub Actions workflow: `.github/workflows/deploy-pages.yml`
 - Triggers on pushes to `main` and manual dispatch
 - Runs catalog validation, builds with Jekyll, and deploys to Pages
-- Publishes to: `https://markjayson13.github.io/UNLVECON490Journal/`
+- Publishes to: `https://markjayson13.github.io/UNLVECON495Journal/`
 
 Branch-based fallback (no Actions):
 1) Settings → Pages → Source: select `main` branch and `/ (root)`  
@@ -67,7 +67,7 @@ The site is a GitHub project page and **must** use:
 
 ```yaml
 url: "https://markjayson13.github.io"
-baseurl: "/UNLVECON490Journal"
+baseurl: "/UNLVECON495Journal"
 ```
 
 If links 404 locally, include `--baseurl ''` when serving (`bundle exec jekyll serve --baseurl ''`).

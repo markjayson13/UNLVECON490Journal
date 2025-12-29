@@ -6,7 +6,8 @@ author:
   email: "farolmarkjayson@yahoo.com"
 
 url: "https://markjayson13.github.io"
-baseurl: "/UNLVECON490Journal"
+baseurl: "/UNLVECON495Journal"
+repository: markjayson13/UNLVECON495Journal
 permalink: /:categories/:title/
 home_preview_length: 160
 
