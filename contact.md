@@ -24,7 +24,7 @@ permalink: /contact/
 
 <section class="container content-section">
   <article class="card info-card">
-    <h3>Department of economics</h3>
+    <h3>Department of Economics</h3>
     <p class="muted small">
       Mailing Address:<br />
       Department of Economics<br />
