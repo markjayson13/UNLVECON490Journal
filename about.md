@@ -24,7 +24,7 @@ permalink: /about/
     </article>
     <article class="founder-card founder-red">
       <div class="founder-media">
-        <img class="founder-img" src="{{ '/assets/images/mark-jayson.jpg' | relative_url }}" alt="Mark Jayson Farol" style="--focus-y: 38%;" />
+        <img class="founder-img" src="{{ '/assets/images/mark-jayson.jpg' | relative_url }}" alt="Mark Jayson Farol" style="--focus-y: 35%;" />
       </div>
       <div class="founder-body">
         <h3>Mark Jayson Farol</h3>
