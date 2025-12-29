@@ -42,6 +42,7 @@
 {% assign paged_years = years | slice: start_index, per_page %}
 
 <section class="container-wide content-section page-header">
+  <h1>{{ page.title | default: "Issues" }}</h1>
   <p class="page-subtitle">Browse by semester</p>
   <p class="page-note">Newest releases appear first.</p>
 </section>
@@ -49,50 +50,46 @@
 <section class="container-wide content-section">
   {% if paged_years and paged_years.size > 0 %}
     {% for year in paged_years %}
-      <div class="year-row">
-        <div class="year-col">
-          <h2>{{ year }}</h2>
-        </div>
-        <div class="semester-col">
-          <div class="semester-stack">
-            {% assign fall_entries = "" | split: "" %}
-            {% assign spring_entries = "" | split: "" %}
-            {% assign other_entries = "" | split: "" %}
-            {% for entry in issues_meta %}
-              {% assign parts = entry | split: "|" %}
-              {% if parts[0] == year %}
-                {% assign term_label = parts[1] %}
-                {% if term_label contains "fall" %}
-                  {% assign fall_entries = fall_entries | push: entry %}
-                {% elsif term_label contains "spring" %}
-                  {% assign spring_entries = spring_entries | push: entry %}
-                {% else %}
-                  {% assign other_entries = other_entries | push: entry %}
-                {% endif %}
+      <section class="year-row">
+        <div class="year-col">{{ year }}</div>
+        <div class="sem-col">
+          {% assign fall_entries = "" | split: "" %}
+          {% assign spring_entries = "" | split: "" %}
+          {% assign other_entries = "" | split: "" %}
+          {% for entry in issues_meta %}
+            {% assign parts = entry | split: "|" %}
+            {% if parts[0] == year %}
+              {% assign term_label = parts[1] %}
+              {% if term_label contains "fall" %}
+                {% assign fall_entries = fall_entries | push: entry %}
+              {% elsif term_label contains "spring" %}
+                {% assign spring_entries = spring_entries | push: entry %}
+              {% else %}
+                {% assign other_entries = other_entries | push: entry %}
               {% endif %}
-            {% endfor %}
+            {% endif %}
+          {% endfor %}
 
-            {% assign ordered_entries = fall_entries | concat: spring_entries | concat: other_entries %}
-            {% for entry in ordered_entries %}
-              {% assign parts = entry | split: "|" %}
-              {% assign issue_year = parts[0] %}
-              {% assign issue_term = parts[1] %}
-              {% assign issue_url = parts[2] %}
-              {% assign issue_title = parts[3] %}
-              {% assign issue_description = parts[4] | default: "Capstone cohort research." %}
-              {% assign term_display = issue_title %}
-              {% if issue_title == nil or issue_title == "" %}
-                {% assign term_display = issue_term | capitalize | append: " " | append: issue_year %}
-              {% endif %}
-              <article class="semester-card">
-                <h3>{{ term_display }}</h3>
-                <p class="muted">{{ issue_description }}</p>
-                <a class="btn btn-small btn-primary" href="{{ issue_url }}">View issue</a>
-              </article>
-            {% endfor %}
-          </div>
+          {% assign ordered_entries = fall_entries | concat: spring_entries | concat: other_entries %}
+          {% for entry in ordered_entries %}
+            {% assign parts = entry | split: "|" %}
+            {% assign issue_year = parts[0] %}
+            {% assign issue_term = parts[1] %}
+            {% assign issue_url = parts[2] %}
+            {% assign issue_title = parts[3] %}
+            {% assign issue_description = parts[4] | default: "Capstone cohort research." %}
+            {% assign term_display = issue_title %}
+            {% if issue_title == nil or issue_title == "" %}
+              {% assign term_display = issue_term | capitalize | append: " " | append: issue_year %}
+            {% endif %}
+            <article class="issue-card">
+              <h3>{{ term_display }}</h3>
+              <p class="muted">{{ issue_description }}</p>
+              <a class="link-inline" href="{{ issue_url }}">View issue</a>
+            </article>
+          {% endfor %}
         </div>
-      </div>
+      </section>
     {% endfor %}
 
     {% if total_pages > 1 %}
