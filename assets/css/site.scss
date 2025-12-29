@@ -16,6 +16,9 @@
   --container: 1400px;
   --container-wide: 1400px;
   --hero-content-offset: clamp(3rem, 6vw, 6.875rem);
+  --hero-content-offset-mobile: 0;
+  --hero-content-padding-mobile: 3.5rem 1.75rem;
+  --hero-text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
   --founder-image-position: center 20%;
 }
 
@@ -224,7 +227,7 @@ a:hover {
 .hero-subtitle {
   color: #ffffff;
   margin: 0 0 1.5rem;
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  text-shadow: var(--hero-text-shadow);
 }
 
 .hero-banner,
@@ -233,9 +236,13 @@ a:hover {
   color: #ffffff;
 }
 
+.hero-banner .hero-content {
+  text-shadow: var(--hero-text-shadow);
+}
+
 .hero-banner .eyebrow {
   color: rgba(255, 255, 255, 0.85);
-  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  text-shadow: var(--hero-text-shadow);
 }
 
 .hero-banner .btn-outline {
@@ -821,12 +828,12 @@ a:hover {
 
 @media (max-width: 768px) {
   .hero-banner {
-    padding: 0;
+    padding: var(--hero-content-offset-mobile);
   }
 
   .hero-content {
     position: relative;
-    padding: 3.5rem 1.75rem;
+    padding: var(--hero-content-padding-mobile);
     max-width: none;
   }
 
