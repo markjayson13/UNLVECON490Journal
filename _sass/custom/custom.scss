@@ -1,0 +1,336 @@
+// Typography
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  color: #1b1b1b;
+  background: #ffffff;
+}
+
+.landing-page .site-title,
+.landing-page .hero h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.landing-page .site-tagline {
+  color: #4b5563;
+  font-weight: 500;
+}
+
+// Layout helpers
+.page-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.landing-header {
+  background: #ffffff;
+  padding: 2.5rem 0 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid #f1f3f5;
+}
+
+.brand-block .site-title {
+  font-size: 2.2rem;
+  letter-spacing: 0.01em;
+}
+
+.brand-block .site-tagline {
+  margin-top: 0.4rem;
+  font-size: 1rem;
+}
+
+.landing-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+  display: flex;
+  justify-content: center;
+  gap: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.85rem;
+}
+
+.landing-nav a {
+  color: #1f2933;
+  text-decoration: none;
+  padding-bottom: 0.25rem;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.landing-nav a:hover,
+.landing-nav a:focus {
+  color: #111827;
+  border-color: #111827;
+}
+
+// Hero
+.hero {
+  position: relative;
+  min-height: 420px;
+  display: flex;
+  align-items: center;
+  background-image: var(--hero-overlay), var(--hero-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  text-align: center;
+  background-color: #0f172a;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.55));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  padding: 2rem 0;
+}
+
+.hero h1 {
+  font-size: 2.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.hero-subtitle {
+  font-size: 1.15rem;
+  color: #e5e7eb;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.btn.primary {
+  background: #111827;
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+}
+
+.btn.primary:hover,
+.btn.primary:focus {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25);
+}
+
+.btn.secondary {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  backdrop-filter: blur(3px);
+}
+
+.btn.secondary:hover,
+.btn.secondary:focus {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+// Content blocks
+.content-block {
+  padding: 3.5rem 0;
+  background: #ffffff;
+}
+
+.content-block.muted {
+  background: #f7f8fa;
+}
+
+.content-header {
+  margin-bottom: 1.5rem;
+}
+
+.content-header h2 {
+  margin: 0 0 0.2rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: #6b7280;
+  margin: 0 0 0.5rem;
+}
+
+.paper-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+
+.paper-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 14px 40px rgba(17, 24, 39, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.paper-card h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.paper-card h3 a {
+  color: #111827;
+  text-decoration: none;
+}
+
+.paper-card h3 a:hover,
+.paper-card h3 a:focus {
+  text-decoration: underline;
+}
+
+.paper-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pill {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #312e81;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.pill.secondary {
+  background: #ecfeff;
+  color: #0f172a;
+}
+
+.authors {
+  color: #374151;
+  margin: 0;
+  font-weight: 600;
+}
+
+.abstract {
+  color: #4b5563;
+  margin: 0;
+}
+
+.card-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.text-link {
+  color: #0f172a;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.2);
+  padding-bottom: 0.1rem;
+}
+
+.text-link:hover,
+.text-link:focus {
+  border-color: rgba(15, 23, 42, 0.5);
+}
+
+.latest-issue {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.latest-issue .abstract {
+  max-width: 560px;
+}
+
+.latest-issue-meta {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 12px 32px rgba(17, 24, 39, 0.08);
+}
+
+.page-markdown {
+  line-height: 1.7;
+}
+
+.landing-footer {
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  padding: 1.25rem 0;
+  font-size: 0.95rem;
+  color: #4b5563;
+}
+
+.landing-footer .page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.landing-footer a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.landing-footer .divider {
+  opacity: 0.5;
+}
+
+// Responsive tweaks
+@media (max-width: 800px) {
+  .hero {
+    min-height: 360px;
+  }
+
+  .hero h1 {
+    font-size: 2.1rem;
+  }
+
+  .latest-issue {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .landing-nav ul {
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .paper-card {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  <head>
+    {%- include head.html -%}
+  </head>
+  <body class="landing-page">
+    {% assign contact_email = site.contact_email | default: 'econ490journal@unlv.edu' %}
+    <header class="landing-header">
+      <div class="page-container">
+        <div class="brand-block">
+          <div class="site-title">{{ site.title }}</div>
+          <div class="site-tagline">{{ site.description }}</div>
+        </div>
+        {%- include topnav.html -%}
+      </div>
+    </header>
+
+    {% assign hero_image = page.hero_image | default: '/assets/images/hero.jpg' %}
+    {% assign hero_overlay = page.hero_overlay | default: '/assets/images/hero-overlay.png' %}
+    <main id="main-content">
+      <section
+        class="hero"
+        style="--hero-image: url('{{ hero_image | relative_url | escape }}'); --hero-overlay: url('{{ hero_overlay | relative_url | escape }}');"
+      >
+        <div class="page-container hero-content">
+          <h1>{{ page.hero_title | default: site.title }}</h1>
+          <p class="hero-subtitle">
+            {{ page.hero_subtitle | default: "Undergraduate economics scholarship from the UNLV ECON 490 capstone cohorts." }}
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="{{ '/issues/' | relative_url }}">Browse Issues</a>
+            <a class="btn secondary" href="{{ '/about/' | relative_url }}">About the Journal</a>
+          </div>
+        </div>
+      </section>
+
+      {% assign papers = site.pages | where: "is_paper", true %}
+      {% assign papers_with_pub = papers | where_exp: "paper", "paper.publication_date" %}
+      {% assign papers_without_pub = papers | where_exp: "paper", "paper.publication_date == nil" %}
+      {% assign papers_with_pub = papers_with_pub | sort: "publication_date" | reverse %}
+      {% assign papers_without_pub = papers_without_pub | sort: "date" | reverse %}
+      {% assign sorted_papers = papers_with_pub | concat: papers_without_pub %}
+      {% assign preview_length = site.home_preview_length | default: 160 %}
+
+      <section class="content-block">
+        <div class="page-container">
+          <div class="content-header">
+            <h2>Featured Papers</h2>
+            <p class="eyebrow">Latest submissions across all issues</p>
+          </div>
+          {% if sorted_papers and sorted_papers.size > 0 %}
+          <div class="paper-grid">
+            {% for paper in sorted_papers limit:4 %}
+              {% assign clean_title = paper.title %}
+              {% if paper.title contains ":" %}
+                {% assign title_prefix = paper.title | split: ":" | first | strip | downcase %}
+                {% if title_prefix contains "paper " %}
+                  {% assign clean_title = paper.title | split: ":" | last | strip %}
+                {% endif %}
+              {% endif %}
+              {% assign abstract_snippet = paper.abstract | default: paper.excerpt | default: "" %}
+              <article class="paper-card">
+                <div class="paper-meta">
+                  {% if paper.publication_date %}
+                    <span class="pill">{{ paper.publication_date }}</span>
+                  {% endif %}
+                  {% if paper.issue_title %}
+                    <span class="pill secondary">{{ paper.issue_title }}</span>
+                  {% endif %}
+                </div>
+                <h3><a href="{{ paper.url | relative_url }}">{{ clean_title }}</a></h3>
+                {% if paper.authors %}
+                  <p class="authors">By {{ paper.authors | join: ", " }}</p>
+                {% endif %}
+                <p class="abstract">
+                  {{ abstract_snippet | strip_html | strip_newlines | truncate: preview_length }}
+                </p>
+                <div class="card-actions">
+                  <a class="text-link" href="{{ paper.url | relative_url }}">Read abstract</a>
+                  {% if paper.pdf_path %}
+                    <a class="text-link" href="{{ paper.pdf_path | relative_url }}">Download PDF</a>
+                  {% endif %}
+                </div>
+              </article>
+            {% endfor %}
+          </div>
+          {% else %}
+            <p>No papers have been published yet. Check back soon.</p>
+          {% endif %}
+        </div>
+      </section>
+
+      {% assign issues = site.pages | where: "is_issue", true | sort: "issue_order" | reverse %}
+      {% assign latest_issue = issues.first %}
+      <section class="content-block muted">
+        <div class="page-container latest-issue">
+          <div>
+            <p class="eyebrow">Latest Issue</p>
+            {% if latest_issue %}
+              <h2>{{ latest_issue.title }}</h2>
+              {% if latest_issue.description %}
+                <p class="abstract">{{ latest_issue.description }}</p>
+              {% endif %}
+              <a class="btn primary" href="{{ latest_issue.url | relative_url }}">View {{ latest_issue.title }}</a>
+            {% else %}
+              <h2>Issues coming soon</h2>
+              <p class="abstract">We will post the first issue shortly. Stay tuned.</p>
+            {% endif %}
+          </div>
+          <div class="latest-issue-meta">
+            <p>Each issue curates ECON 490 capstone papers with abstracts, authors, and downloadable PDFs.</p>
+            <a class="text-link" href="{{ '/issues/' | relative_url }}">Browse all issues</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="content-block">
+        <div class="page-container page-markdown">
+          {{ content }}
+        </div>
+      </section>
+    </main>
+
+    <footer class="landing-footer">
+      <div class="page-container">
+        <span>{{ site.title }}</span>
+        <span class="divider">•</span>
+        <span>Contact: <a href="mailto:{{ contact_email }}">{{ contact_email }}</a></span>
+      </div>
+    </footer>
+
+    <script src="{{ '/assets/js/just-the-docs.js' | relative_url }}"></script>
+  </body>
+</html>

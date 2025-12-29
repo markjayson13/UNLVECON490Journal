@@ -1,14 +1,17 @@
 ---
-layout: default
+layout: landing
 title: Home
-nav_order: 1
 description: "UNLV ECON 490 Capstone Proceedings"
+nav_exclude: true
 permalink: /
+hero_title: "UNLV ECON 490 Capstone Proceedings"
+hero_subtitle: "Undergraduate economics capstone research, organized by semester with abstracts, authors, and downloadable PDFs."
+hero_image: "/assets/images/hero.jpg"
 ---
 
-# UNLV ECON 490 Capstone Proceedings
+## About the journal
 
-Browse undergraduate economics capstone papers by semester and year. Each paper page includes its abstract, metadata, and a PDF download.
+Browse undergraduate economics capstone papers by semester and year. Each paper page includes its abstract, metadata, and a PDF download so readers can quickly evaluate and access student research.
 
 > Disclaimer: Undergraduate proceedings. Not peer reviewed unless explicitly stated on a paper.
 

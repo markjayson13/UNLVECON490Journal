@@ -3,6 +3,8 @@ description: Undergraduate economics capstone papers organized by semester and y
 url: "https://markjayson13.github.io"
 baseurl: "/UNLVECON490Journal"
 permalink: pretty
+contact_email: "econ490journal@unlv.edu"
+home_preview_length: 160
 
 remote_theme: just-the-docs/just-the-docs
 plugins:
