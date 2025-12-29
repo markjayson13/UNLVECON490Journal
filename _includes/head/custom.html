@@ -2,8 +2,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-{% assign is_paper_page = page.is_paper or page.paper_id %}
-{% if is_paper_page %}
+{% assign is_paper = page.is_paper or page.paper_id %}
+{% if is_paper %}
   {% assign clean_title = page.title %}
   {% if clean_title contains ":" %}
     {% assign clean_title = clean_title | split: ":" | last | strip %}

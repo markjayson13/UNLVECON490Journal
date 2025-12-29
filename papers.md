@@ -4,7 +4,7 @@ title: Papers
 permalink: /papers/
 ---
 
-{% assign papers = site.pages | where_exp: "p", "p.paper_id" %}
+{% assign papers = site.pages | where_exp: "page", "page.paper_id" %}
 {% assign issues = site.pages | where: "is_issue", true | sort: "issue_order" | reverse %}
 
 {% if papers and papers.size > 0 %}

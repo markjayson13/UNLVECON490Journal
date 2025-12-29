@@ -13,7 +13,7 @@ classes: wide
 
 ## Papers in this issue
 
-{% assign papers = site.pages | where: "issue_id", page.issue_id | where_exp: "p", "p.paper_id" | sort: "publication_date" | reverse %}
+{% assign papers = site.pages | where: "issue_id", page.issue_id | where_exp: "page", "page.paper_id" | sort: "publication_date" | reverse %}
 {% if papers and papers.size > 0 %}
 <div class="card-grid featured-papers">
   {% for paper in papers %}

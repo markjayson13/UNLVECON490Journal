@@ -21,7 +21,7 @@ This issue features research papers from the Spring 2024 semester of UNLV ECON 4
 
 Browse the papers below or use the navigation menu to explore individual submissions.
 
-{% assign papers = site.pages | where: "issue_id", page.issue_id | where_exp: "p", "p.paper_id" | sort: "paper_id" %}
+{% assign papers = site.pages | where: "issue_id", page.issue_id | where_exp: "page", "page.paper_id" | sort: "paper_id" %}
 {% if papers and papers.size > 0 %}
 <ul>
   {% for paper in papers %}

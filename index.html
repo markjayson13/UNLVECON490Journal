@@ -9,7 +9,7 @@ header: false
 {% assign hero_image = '/assets/images/hero.jpg' | relative_url %}
 {% assign issues = site.pages | where: "is_issue", true | sort: "issue_order" | reverse %}
 {% assign latest_issue = issues | first %}
-{% assign papers = site.pages | where_exp: "p", "p.paper_id" %}
+{% assign papers = site.pages | where_exp: "page", "page.paper_id" %}
 {% assign papers_with_pub = papers | where_exp: "paper", "paper.publication_date" | sort: "publication_date" | reverse %}
 {% assign papers_without_pub = papers | where_exp: "paper", "paper.publication_date == nil" | sort: "date" | reverse %}
 {% assign featured_papers = papers_with_pub | concat: papers_without_pub | slice: 0,4 %}
