@@ -16,7 +16,7 @@
   --container: 1400px;
   --container-wide: 1400px;
   --hero-content-offset: clamp(3rem, 6vw, 6.875rem);
-  --founder-media-position: center 20%;
+  --founder-image-position: center 20%;
 }
 
 *,
@@ -217,6 +217,7 @@ a:hover {
   font-family: "Playfair Display", "Times New Roman", serif;
   font-size: clamp(2.4rem, calc(3vw + 1rem), 3.6rem);
   margin: 0.35rem 0 0.5rem;
+  /* Element-level text shadows keep headline readable while allowing other hero text to inherit defaults. */
   text-shadow: 0 2px 18px rgba(0, 0, 0, 0.45);
 }
 
@@ -759,7 +760,7 @@ a:hover {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: var(--founder-media-position);
+  object-position: var(--founder-image-position);
   display: block;
 }
 
