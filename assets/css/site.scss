@@ -35,7 +35,6 @@ body {
 }
 
 p {
-  line-height: 1.6;
   margin: 0 0 1.05rem;
 }
 
@@ -209,7 +208,6 @@ a:hover {
   z-index: 1;
   top: var(--hero-content-offset);
   left: var(--hero-content-offset);
-  right: auto;
   text-align: left;
   display: flex;
   flex-direction: column;
