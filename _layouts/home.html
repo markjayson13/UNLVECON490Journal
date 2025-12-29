@@ -1,0 +1,108 @@
+---
+layout: base
+---
+{% assign hero_image = page.hero_image | default: '/assets/images/hero.jpg' %}
+{% assign hero_heading = page.hero_heading | default: 'The Journey Begins Here' %}
+{% assign hero_subheading = page.hero_subheading | default: 'Undergraduate economics research from UNLV capstone cohorts.' %}
+{% assign primary_cta_label = page.primary_cta_label | default: 'Browse Issues' %}
+{% assign primary_cta_link = page.primary_cta_link | default: '/issues/' %}
+{% assign secondary_cta_label = page.secondary_cta_label | default: 'Read More' %}
+{% assign secondary_cta_link = page.secondary_cta_link | default: '/about/' %}
+
+{% assign issues = site.pages | where: "is_issue", true | sort: "issue_order" | reverse %}
+{% assign latest_issue = issues | first %}
+{% assign papers = site.pages | where: "is_paper", true %}
+{% assign papers_with_dates = papers | where_exp: "paper", "paper.publication_date" | sort: "publication_date" | reverse %}
+{% assign papers_without_dates = papers | where_exp: "paper", "paper.publication_date == nil" | sort: "date" | reverse %}
+{% assign featured_papers = papers_with_dates | concat: papers_without_dates | slice: 0, 4 %}
+
+<section
+  class="hero-banner"
+  style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)), url('{{ hero_image | relative_url }}');"
+>
+  <div class="container hero-content">
+    <p class="eyebrow">Undergraduate Economics Journal</p>
+    <h1>{{ hero_heading }}</h1>
+    <p class="hero-subtitle">{{ hero_subheading }}</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="{{ primary_cta_link | relative_url }}">{{ primary_cta_label }}</a>
+      <a class="btn btn-outline" href="{{ secondary_cta_link | relative_url }}">{{ secondary_cta_label }}</a>
+    </div>
+  </div>
+</section>
+
+<section class="container content-section">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Latest Issue</p>
+      <h2>Newest semester release</h2>
+    </div>
+    <a class="link-inline" href="{{ '/issues/' | relative_url }}">See all issues</a>
+  </div>
+  <div class="card">
+    {% if latest_issue %}
+      <p class="eyebrow">{{ latest_issue.issue_title | default: latest_issue.title }}</p>
+      <h3><a href="{{ latest_issue.url | relative_url }}">{{ latest_issue.title }}</a></h3>
+      {% if latest_issue.description %}
+        <p class="muted">{{ latest_issue.description }}</p>
+      {% endif %}
+    {% else %}
+      <p class="muted">No issues have been published yet.</p>
+    {% endif %}
+  </div>
+</section>
+
+<section class="container content-section">
+  <div class="section-header">
+    <div>
+      <p class="eyebrow">Featured Papers</p>
+      <h2>Recent research</h2>
+    </div>
+  </div>
+  {% if featured_papers and featured_papers.size > 0 %}
+    <div class="card-grid">
+      {% for paper in featured_papers %}
+        {% assign clean_title = paper.title %}
+        {% if paper.title contains ":" %}
+          {% assign title_parts = paper.title | split: ":" %}
+          {% if title_parts.first contains "Paper" %}
+            {% assign clean_title = title_parts.last | strip %}
+          {% endif %}
+        {% endif %}
+        {% assign pdf_path = paper.pdf_path | default: paper.pdf %}
+        {% assign issue_label = paper.issue_title | default: paper.issue_slug | default: paper.issue_id %}
+        <article class="card paper-card">
+          <div class="paper-meta">
+            {% if paper.publication_date %}
+              <span class="pill">{{ paper.publication_date }}</span>
+            {% endif %}
+            {% if issue_label %}
+              <span class="pill light">{{ issue_label }}</span>
+            {% endif %}
+          </div>
+          <h3><a href="{{ paper.url | relative_url }}">{{ clean_title }}</a></h3>
+          {% if paper.authors %}
+            <p class="muted small">By {{ paper.authors | join: ", " }}</p>
+          {% endif %}
+          {% if paper.abstract %}
+            <p class="muted">{{ paper.abstract | strip_html | truncatewords: 36 }}</p>
+          {% endif %}
+          <div class="card-actions">
+            <a class="btn btn-small" href="{{ paper.url | relative_url }}">Read abstract</a>
+            {% if pdf_path %}
+              <a class="btn btn-small btn-primary" href="{{ pdf_path | relative_url }}">Download PDF</a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">No papers published yet.</p>
+  {% endif %}
+</section>
+
+{% if content and content != "" %}
+  <section class="container content-section">
+    {{ content }}
+  </section>
+{% endif %}

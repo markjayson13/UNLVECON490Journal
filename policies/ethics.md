@@ -1,10 +1,8 @@
-layout: single
+layout: page
 title: Ethics
 parent: Policies
 nav_order: 3
 permalink: /policies/ethics/
-
-# Ethics and academic integrity
 
 - Submit only original work authored by the listed contributors.
 - Cite all data, code, and sources used in the analysis.

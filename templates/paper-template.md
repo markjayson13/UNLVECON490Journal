@@ -1,9 +1,10 @@
 ---
 layout: paper
-title: "Paper {{PAPER_NUMBER}}: {{PAPER_TITLE}}"
+title: "{{PAPER_TITLE}}"
 permalink: /issues/{{ISSUE_SLUG}}/paper-{{PAPER_NUMBER}}/
 is_paper: true
 paper_id: "{{ISSUE_SLUG}}-{{PAPER_NUMBER}}"
+issue_id: "{{ISSUE_SLUG}}"
 issue_slug: "{{ISSUE_SLUG}}"
 issue_title: "{{ISSUE_TITLE}}"
 publication_date: "{{PUBLICATION_DATE}}"

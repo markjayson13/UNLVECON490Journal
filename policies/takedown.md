@@ -1,10 +1,8 @@
-layout: single
+layout: page
 title: Takedown
 parent: Policies
 nav_order: 2
 permalink: /policies/takedown/
-
-# Takedown and corrections
 
 To request a correction or takedown, email the course coordinator with:
 

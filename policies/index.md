@@ -1,10 +1,8 @@
-layout: single
+layout: page
 title: Policies
 nav_order: 4
 permalink: /policies/
 has_children: true
-
-# Policies
 
 These pages summarize author permissions, takedown and corrections, ethics, and privacy expectations for ECON 490 capstone papers.
 

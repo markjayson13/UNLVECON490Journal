@@ -1,0 +1,50 @@
+---
+layout: base
+---
+{% assign issue_papers = site.pages | where: "is_paper", true | where: "issue_slug", page.issue_slug | sort: "publication_date" | reverse %}
+
+<section class="container content-section page-container">
+  <p class="eyebrow">Issue</p>
+  <h1>{{ page.issue_title | default: page.title }}</h1>
+  {% if page.description %}
+    <p class="lede">{{ page.description }}</p>
+  {% endif %}
+
+  {% if issue_papers and issue_papers.size > 0 %}
+    <div class="card-grid">
+      {% for paper in issue_papers %}
+        {% assign clean_title = paper.title %}
+        {% if paper.title contains ":" %}
+          {% assign parts = paper.title | split: ":" %}
+          {% if parts.first contains "Paper" %}
+            {% assign clean_title = parts.last | strip %}
+          {% endif %}
+        {% endif %}
+        {% assign pdf_path = paper.pdf_path | default: paper.pdf %}
+        <article class="card paper-card">
+          <div class="paper-meta">
+            {% if paper.publication_date %}
+              <span class="pill">{{ paper.publication_date }}</span>
+            {% endif %}
+            <span class="pill light">{{ page.issue_title | default: page.title }}</span>
+          </div>
+          <h2><a href="{{ paper.url | relative_url }}">{{ clean_title }}</a></h2>
+          {% if paper.authors %}
+            <p class="muted small">By {{ paper.authors | join: ", " }}</p>
+          {% endif %}
+          {% if paper.abstract %}
+            <p class="muted">{{ paper.abstract | strip_html | truncatewords: 48 }}</p>
+          {% endif %}
+          <div class="card-actions">
+            <a class="btn btn-small" href="{{ paper.url | relative_url }}">Read abstract</a>
+            {% if pdf_path %}
+              <a class="btn btn-small btn-primary" href="{{ pdf_path | relative_url }}">Download PDF</a>
+            {% endif %}
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">No papers are available for this issue yet.</p>
+  {% endif %}
+</section>

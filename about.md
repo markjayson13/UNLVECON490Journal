@@ -1,8 +1,6 @@
-layout: single
+layout: page
 title: About
 permalink: /about/
-
-# About the proceedings
 
 The UNLV ECON 490 Capstone Proceedings archive undergraduate research papers from the senior capstone course. Each issue corresponds to a semester and year, with individual paper pages that expose abstracts, keywords, and PDF links for easy discovery.
 

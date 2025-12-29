@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="{{ page.lang | default: site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}
+    </title>
+    <meta
+      name="description"
+      content="{{ page.excerpt | default: page.description | default: site.description | strip_html | strip_newlines }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}" />
+    <link rel="icon" type="image/png" href="{{ '/assets/favicon.png' | relative_url }}" />
+
+    {% if page.is_paper %}
+      {% assign citation_title = page.title %}
+      {% if page.title contains ":" %}
+        {% assign title_parts = page.title | split: ":" %}
+        {% if title_parts.first contains "Paper" %}
+          {% assign citation_title = title_parts.last | strip %}
+        {% endif %}
+      {% endif %}
+      {% assign pdf_path = page.pdf_path | default: page.pdf %}
+      <meta name="citation_title" content="{{ citation_title }}" />
+      {% if page.authors %}
+        {% for author in page.authors %}
+          <meta name="citation_author" content="{{ author }}" />
+        {% endfor %}
+      {% endif %}
+      {% if page.publication_date %}
+        <meta name="citation_publication_date" content="{{ page.publication_date | date: '%Y/%m/%d' }}" />
+      {% endif %}
+      {% if pdf_path %}
+        <meta name="citation_pdf_url" content="{{ pdf_path | absolute_url }}" />
+      {% endif %}
+      <meta name="citation_abstract_html_url" content="{{ page.url | absolute_url }}" />
+    {% endif %}
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container brand-block">
+        <a class="site-title" href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        <p class="site-tagline">{{ site.tagline | default: site.description }}</p>
+      </div>
+      <nav class="main-nav" aria-label="Primary">
+        <div class="container">
+          <ul>
+            <li><a href="{{ '/' | relative_url }}">Home</a></li>
+            <li><a href="{{ '/issues/' | relative_url }}">Issues</a></li>
+            <li><a href="{{ '/papers/' | relative_url }}">Papers</a></li>
+            <li><a href="{{ '/about/' | relative_url }}">About</a></li>
+            <li><a href="{{ '/contact/' | relative_url }}">Contact</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main class="page-body">
+      {{ content }}
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <span>{{ site.title }}</span>
+        <span class="divider">•</span>
+        <span>Contact: <a href="mailto:{{ site.contact_email | default: 'econ490journal@unlv.edu' }}">{{ site.contact_email | default: 'econ490journal@unlv.edu' }}</a></span>
+      </div>
+    </footer>
+  </body>
+</html>
