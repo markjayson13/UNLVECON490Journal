@@ -178,12 +178,21 @@ a:hover {
   background-repeat: no-repeat;
 }
 
+.hero-banner::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.05) 60%);
+  z-index: 0;
+}
+
 .hero-banner::after {
   content: "";
   position: absolute;
   inset: 0;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.12) 0%, rgba(0, 0, 0, 0.08) 45%, rgba(0, 0, 0, 0) 75%);
   pointer-events: none;
+  z-index: 0;
 }
 
 .hero-content {
@@ -200,8 +209,31 @@ a:hover {
 }
 
 .hero-subtitle {
-  color: #f2f2f2;
+  color: #ffffff;
   margin: 0 0 1.5rem;
+}
+
+.hero-banner,
+.hero-banner h1,
+.hero-banner .hero-subtitle {
+  color: #ffffff;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.hero-banner .eyebrow {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+}
+
+.hero-banner .btn-outline {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.7);
+}
+
+.hero-banner .btn-outline:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.85);
 }
 
 .hero-actions {
@@ -306,7 +338,10 @@ a:hover {
 }
 
 .cat-box {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   border: 1px solid #e5e5e5;
   border-radius: 14px;
   padding: 18px;
@@ -329,6 +364,14 @@ a:hover {
 .cat-title {
   font-weight: 600;
   font-size: 16px;
+}
+
+.cat-grid .cat-box:nth-child(odd) .cat-title {
+  color: #000;
+}
+
+.cat-grid .cat-box:nth-child(even) .cat-title {
+  color: #666;
 }
 
 .content-stack {
